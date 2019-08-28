@@ -5,7 +5,7 @@
 				<img src="{{ recipe.Image }}"/>
 			</div>
 			<h5 class="card-title">
-				<a href="{{ url_for('recipe', id=recipe.id) }}">{{ recipe.recipeName }}</a>
+				<a href="{{ url_for('main.recipe', id=recipe.id) }}">{{ recipe.recipeName }}</a>
 			</h5>
 			<p class="card-content"> 
 				Rated: {{ recipe.Rating }} Stars
