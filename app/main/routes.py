@@ -69,7 +69,7 @@ def login():
 			next_page = url_for('main.index')
 # If a user is an admin first redirect them to the ingredients manager. This is currently the basis for a more complete admin view
 		if user.isAdmin is True:
-			next_page = url_for('main.ingredients')		
+			next_page = url_for('main.admin')		
 		return redirect(next_page)
 	return render_template('login.html', title='Sign In', form=form)
 
