@@ -1,17 +1,4 @@
-2019-08-28 14:59:40,453 ERROR: Exception on /admin/submit_recipe [POST] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 2361, in _determine_joins
-    consider_as_foreign_keys=consider_as_foreign_keys,
-  File "<string>", line 2, in join_condition
-  File "<string>", line 2, in _join_condition
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/util/deprecations.py", line 128, in warned
-    return fn(*args, **kwargs)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/sql/selectable.py", line 947, in _join_condition
-    % (a.description, b.description, hint)
-sqlalchemy.exc.NoForeignKeysError: Can't find any foreign key relationships between 'recipe' and 'ingredients'.
-
-During handling of the above exception, another exception occurred:
-
+2019-08-28 15:02:26,239 ERROR: Exception on /admin/submit_recipe [POST] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -47,10 +34,18 @@ Traceback (most recent call last):
     can_be_synced_fn=self._columns_are_mapped,
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 2246, in __init__
     self._determine_joins()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 2383, in _determine_joins
-    "specify a 'primaryjoin' expression." % self.prop
-sqlalchemy.exc.NoForeignKeysError: Could not determine join condition between parent/child tables on relationship Recipe.Ingredients - there are no foreign keys linking these tables.  Ensure that referencing columns are associated with a ForeignKey or ForeignKeyConstraint, or specify a 'primaryjoin' expression.
-2019-08-28 14:59:40,738 ERROR: Exception on /favicon.ico [GET] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 2346, in _determine_joins
+    consider_as_foreign_keys=consider_as_foreign_keys,
+  File "<string>", line 2, in join_condition
+  File "<string>", line 2, in _join_condition
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/util/deprecations.py", line 128, in warned
+    return fn(*args, **kwargs)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/sql/selectable.py", line 928, in _join_condition
+    a, a_subset, b, consider_as_foreign_keys
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/sql/selectable.py", line 982, in _joincond_scan_left_right
+    b.foreign_keys, key=lambda fk: fk.parent._creation_order
+AttributeError: type object 'recipe_ingredients' has no attribute 'foreign_keys'
+2019-08-28 15:02:26,544 ERROR: Exception on /favicon.ico [GET] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
     rv = self.dispatch_request()
@@ -101,7 +96,8 @@ Traceback (most recent call last):
     configure_mappers()
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/mapper.py", line 3225, in configure_mappers
     raise e
-sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'mapped class Recipe->recipe'. Original exception was: Could not determine join condition between parent/child tables on relationship Recipe.Ingredients - there are no foreign keys linking these tables.  Ensure that referencing columns are associated with a ForeignKey or ForeignKeyConstraint, or specify a 'primaryjoin' expression.
-2019-08-28 15:02:09,986 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-28 15:02:13,763 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-28 15:02:18,900 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'mapped class Recipe->recipe'. Original exception was: type object 'recipe_ingredients' has no attribute 'foreign_keys'
+2019-08-28 15:05:26,996 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
+2019-08-28 15:05:58,550 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
+2019-08-28 15:06:02,233 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
+2019-08-28 15:06:21,533 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]

@@ -1,10 +1,10 @@
-2019-08-28 15:23:24,460 ERROR: Exception on /admin/submit_recipe [POST] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
+2019-08-28 15:29:15,533 ERROR: Exception on /admin/submit_recipe [POST] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1179, in _execute_context
-    context = constructor(dialect, self, conn, *args)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 719, in _init_compiled
-    param.append(processors[key](compiled_params[key]))
-ValueError: could not convert string to float: 'Ounc'
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 552, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.InterfaceError: Error binding parameter 1 - probably unsupported type.
 
 The above exception was the direct cause of the following exception:
 
@@ -61,22 +61,20 @@ Traceback (most recent call last):
     return connection._execute_clauseelement(self, multiparams, params)
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1107, in _execute_clauseelement
     distilled_params,
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1182, in _execute_context
-    e, util.text_type(statement), parameters, None, None
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1248, in _execute_context
+    e, statement, parameters, cursor, context
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1466, in _handle_dbapi_exception
     util.raise_from_cause(sqlalchemy_exception, exc_info)
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 398, in raise_from_cause
     reraise(type(exception), exception, tb=exc_tb, cause=cause)
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 152, in reraise
     raise value.with_traceback(tb)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1179, in _execute_context
-    context = constructor(dialect, self, conn, *args)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 719, in _init_compiled
-    param.append(processors[key](compiled_params[key]))
-sqlalchemy.exc.StatementError: (raised as a result of Query-invoked autoflush; consider using a session.no_autoflush block if this flush is occurring prematurely)
-(builtins.ValueError) could not convert string to float: 'Ounc'
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 552, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.InterfaceError: (raised as a result of Query-invoked autoflush; consider using a session.no_autoflush block if this flush is occurring prematurely)
+(sqlite3.InterfaceError) Error binding parameter 1 - probably unsupported type.
 [SQL: INSERT INTO "recipeIngredients" (recipe_id, ingredient_id, "ingredientAmount", "ingredientUnit") VALUES (?, ?, ?, ?)]
-[parameters: [{'ingredient_id': <Ingredient Vanilla Wafers, 'ingredientAmount': 'Ounc', 'recipe_id': 1, 'ingredientUnit': '11'}]]
-2019-08-28 15:24:47,383 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-28 15:25:18,007 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-28 15:26:16,751 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
+[parameters: (1, <Ingredient Vanilla Wafers, 11.0, 'Ounce')]
+(Background on this error at: http://sqlalche.me/e/rvf5)

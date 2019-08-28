@@ -1,8 +1,8 @@
-from flask import render_template, Flask, redirect, url_for, flash, request
+from flask import render_template, Flask, redirect, url_for, flash, request, current_app
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 from config import Config
-from app import app, db, login
+from app import db, login
 from app.models import Recipe, User, Ingredients, recipe_ingredients, Recipe_Steps
 from app.main.forms import RecipeForm, LoginForm, RegistrationForm, IngredientForm
 from app.main import bp
@@ -11,7 +11,7 @@ from app.main import bp
 @bp.route('/index')
 def index():
 	page = request.args.get('page', 1, type=int)
-	recipeList = Recipe.query.paginate(page, app.config['RECIPES_PER_PAGE'],False)
+	recipeList = Recipe.query.paginate(page, current_app.config['RECIPES_PER_PAGE'],False)
 	next_url = url_for('main.index', page=recipeList.next_num) if recipeList.has_next else None
 	prev_url = url_for('main.index', page=recipeList.prev_num) if recipeList.has_prev else None
 	return render_template('index.html', Recipes = recipeList.items, next_url = next_url, prev_url=prev_url)
@@ -19,7 +19,7 @@ def index():
 @bp.route('/discover')
 def discover():
 	page = request.args.get('page', 1, type=int)
-	recipes = Recipe.query.order_by(Recipe.timestamp.desc()).paginate(page, app.config['RECIPES_PER_PAGE'],False)
+	recipes = Recipe.query.order_by(Recipe.timestamp.desc()).paginate(page, current_app.config['RECIPES_PER_PAGE'],False)
 	next_url = url_for('main.index', page=recipes.next_num) if recipes.has_next else None
 	prev_url = url_for('main.index', page=recipes.prev_num) if recipes.has_prev else None	
 	return render_template('index.html', title='Discover', Recipes=recipes.items, next_url=next_url, prev_url=prev_url)
@@ -106,9 +106,9 @@ def admin():
 def manage_ingredients():
 	if current_user.isAdmin is not True:
 		flash('Unable to access')
-		return redirect(url_for('index'))			
+		return redirect(url_for('main.index'))			
 	page = request.args.get('page', 1, type=int)
-	ingredients = Ingredients.query.paginate(page, app.config['INGREDIENTS_PER_PAGE'],False)
+	ingredients = Ingredients.query.paginate(page, current_app.config['INGREDIENTS_PER_PAGE'],False)
 	next_url = url_for('main.manage_ingredients', page=ingredients.next_num) if ingredients.has_next else None
 	prev_url = url_for('main.manage_ingredients', page=ingredients.prev_num) if ingredients.has_prev else None
 	return render_template('manage_ingredients.html', Ingredients = ingredients.items, next_url = next_url, prev_url = prev_url)
@@ -118,7 +118,7 @@ def manage_ingredients():
 def create_ingredient():
 	if current_user.isAdmin is not True:
 		flash('Unable to access')
-		return redirect(url_for('index'))
+		return redirect(url_for('main.index'))
 	form = IngredientForm()
 	if form.validate_on_submit():
 		ingredient = Ingredients(ingredientName=form.ingredientName.data, ingredientType=form.ingredientType.data, measurementUnit=form.measurementUnit.data, standardUnitAmount=form.standardUnitAmount.data)
@@ -132,9 +132,9 @@ def create_ingredient():
 def manage_recipes():
 	if current_user.isAdmin is not True:
 		flash('Unable to access')
-		return redirect(url_for('index'))			
+		return redirect(url_for('main.index'))			
 	page = request.args.get('page', 1, type=int)
-	recipes = Recipe.query.paginate(page, app.config['RECIPES_PER_PAGE'],False)
+	recipes = Recipe.query.paginate(page, current_app.config['RECIPES_PER_PAGE'],False)
 	next_url = url_for('main.manage_recipes', page=recipes.next_num) if recipes.has_next else None
 	prev_url = url_for('main.manage_recipes', page=recipes.prev_num) if recipes.has_prev else None
 	return render_template('manage_recipes.html', Recipes = recipes.items, next_url = next_url, prev_url = prev_url)
@@ -194,9 +194,9 @@ def submit_recipe():
 def manage_users():
 	if current_user.isAdmin is not True:
 		flash('Unable to access')
-		return redirect(url_for('index'))			
+		return redirect(url_for('main.index'))			
 	page = request.args.get('page', 1, type=int)
-	users = User.query.paginate(page, app.config['USERS_PER_PAGE'],False)
+	users = User.query.paginate(page, current_app.config['USERS_PER_PAGE'],False)
 	next_url = url_for('main.manage_users', page=users.next_num) if users.has_next else None
 	prev_url = url_for('main.manage_users', page=users.prev_num) if users.has_prev else None
 	return render_template('manage_users.html', Users = users.items, next_url = next_url, prev_url = prev_url)

@@ -1,4 +1,4 @@
-2019-08-28 14:18:26,412 ERROR: Exception on /admin/submit_recipe [POST] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
+2019-08-28 14:53:15,426 ERROR: Exception on /admin/submit_recipe [POST] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -45,7 +45,7 @@ Traceback (most recent call last):
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/sql/selectable.py", line 982, in _joincond_scan_left_right
     b.foreign_keys, key=lambda fk: fk.parent._creation_order
 AttributeError: type object 'recipe_ingredients' has no attribute 'foreign_keys'
-2019-08-28 14:18:26,795 ERROR: Exception on /favicon.ico [GET] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
+2019-08-28 14:53:15,738 ERROR: Exception on /favicon.ico [GET] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
     rv = self.dispatch_request()
@@ -97,4 +97,12 @@ Traceback (most recent call last):
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/mapper.py", line 3225, in configure_mappers
     raise e
 sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'mapped class Recipe->recipe'. Original exception was: type object 'recipe_ingredients' has no attribute 'foreign_keys'
-2019-08-28 14:53:08,900 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
+2019-08-28 14:56:46,827 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
+2019-08-28 14:57:05,586 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
+2019-08-28 14:57:09,506 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
+2019-08-28 14:58:41,452 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
+2019-08-28 14:58:44,762 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
+2019-08-28 14:59:12,871 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
+2019-08-28 14:59:19,733 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
+2019-08-28 14:59:24,293 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
+2019-08-28 14:59:35,544 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]

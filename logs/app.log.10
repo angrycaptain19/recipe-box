@@ -1,5 +1,4 @@
-2019-08-23 18:01:03,420 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-23 18:01:10,141 ERROR: Exception on /admin/submit_recipe [POST] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
+2019-08-28 14:18:26,412 ERROR: Exception on /admin/submit_recipe [POST] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -13,71 +12,89 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/timgilboy/recipes_v3/recipe-box/app/routes.py", line 154, in submit_recipe
-    ingredientNames = request.form.getlist['ingredientName']
-TypeError: 'method' object is not subscriptable
-2019-08-23 18:02:18,442 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-23 18:13:19,391 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-23 18:17:40,707 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-23 18:18:32,522 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-23 18:19:13,741 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-23 18:21:02,770 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-23 18:21:34,033 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-23 18:24:12,054 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-23 18:25:21,359 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-23 18:25:58,587 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-23 18:39:21,293 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-23 18:39:34,621 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-23 18:40:43,990 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-23 18:40:58,270 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-28 14:02:08,078 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-28 14:02:22,402 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-28 14:05:22,290 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-28 14:05:34,962 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-28 14:05:39,277 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-28 14:06:03,086 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-28 14:06:17,694 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-28 14:06:57,474 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-28 14:09:47,461 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-28 14:13:07,154 ERROR: Exception on /admin/submit_recipe [POST] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
+  File "/Users/timgilboy/recipes_v3/recipe-box/app/routes.py", line 158, in submit_recipe
+    recipeCheck = Recipe.query.filter_by(recipeName=recipeName).first()
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py", line 517, in __get__
+    mapper = orm.class_mapper(type)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/base.py", line 441, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/base.py", line 420, in _inspect_mapped_class
+    mapper._configure_all()
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/mapper.py", line 1337, in _configure_all
+    configure_mappers()
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/mapper.py", line 3229, in configure_mappers
+    mapper._post_configure_properties()
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/mapper.py", line 1947, in _post_configure_properties
+    prop.init()
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/interfaces.py", line 196, in init
+    self.do_init()
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 1861, in do_init
+    self._setup_join_conditions()
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 1941, in _setup_join_conditions
+    can_be_synced_fn=self._columns_are_mapped,
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 2246, in __init__
+    self._determine_joins()
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 2346, in _determine_joins
+    consider_as_foreign_keys=consider_as_foreign_keys,
+  File "<string>", line 2, in join_condition
+  File "<string>", line 2, in _join_condition
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/util/deprecations.py", line 128, in warned
+    return fn(*args, **kwargs)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/sql/selectable.py", line 928, in _join_condition
+    a, a_subset, b, consider_as_foreign_keys
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/sql/selectable.py", line 982, in _joincond_scan_left_right
+    b.foreign_keys, key=lambda fk: fk.parent._creation_order
+AttributeError: type object 'recipe_ingredients' has no attribute 'foreign_keys'
+2019-08-28 14:18:26,795 ERROR: Exception on /favicon.ico [GET] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1925, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1907, in raise_routing_exception
+    raise request.routing_exception
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/ctx.py", line 350, in match_request
+    result = self.url_adapter.match(return_rule=True)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 1799, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
 Traceback (most recent call last):
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/timgilboy/recipes_v3/recipe-box/app/routes.py", line 179, in submit_recipe
-    recipeIngredient = recipe_ingredients(recipe_id=recipeRecordID, ingredient_id=ingredient, ingredientAmount=ingredientAmounts[i], ingredientMeasurement=ingredientMeasurements[i])
-NameError: name 'ingredientAmounts' is not defined
-2019-08-28 14:13:58,393 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-28 14:14:04,861 ERROR: Exception on /admin/submit_recipe [POST] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/timgilboy/recipes_v3/recipe-box/app/routes.py", line 179, in submit_recipe
-    recipeIngredient = recipe_ingredients(recipe_id=recipeRecordID, ingredient_id=ingredient, ingredientAmount=ingredientAmounts[i], ingredientMeasurement=ingredientMeasurements[i])
-TypeError: 'Table' object is not callable
-2019-08-28 14:16:11,673 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-28 14:16:54,202 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-28 14:16:59,559 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-28 14:17:50,415 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-28 14:18:04,490 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-28 14:18:09,660 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-28 14:18:23,238 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1815, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1743, in handle_http_exception
+    return handler(e)
+  File "/Users/timgilboy/recipes_v3/recipe-box/app/errors.py", line 6, in not_found_error
+    return render_template('404.html'), 404
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/templating.py", line 136, in render_template
+    ctx.app.update_template_context(context)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 838, in update_template_context
+    context.update(func())
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask_login/utils.py", line 368, in _user_context_processor
+    return dict(current_user=_get_user())
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask_login/utils.py", line 335, in _get_user
+    current_app.login_manager._load_user()
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask_login/login_manager.py", line 359, in _load_user
+    return self.reload_user()
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask_login/login_manager.py", line 321, in reload_user
+    user = self.user_callback(user_id)
+  File "/Users/timgilboy/recipes_v3/recipe-box/app/models.py", line 25, in load_user
+    return User.query.get(int(id))
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py", line 517, in __get__
+    mapper = orm.class_mapper(type)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/base.py", line 441, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/base.py", line 420, in _inspect_mapped_class
+    mapper._configure_all()
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/mapper.py", line 1337, in _configure_all
+    configure_mappers()
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/mapper.py", line 3225, in configure_mappers
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'mapped class Recipe->recipe'. Original exception was: type object 'recipe_ingredients' has no attribute 'foreign_keys'
+2019-08-28 14:53:08,900 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]

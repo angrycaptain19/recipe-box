@@ -1,33 +1,4 @@
-2019-08-28 15:17:32,936 ERROR: Exception on /admin/submit_recipe [POST] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/timgilboy/recipes_v3/recipe-box/app/routes.py", line 179, in submit_recipe
-    recipeIngredient = recipe_ingredients(recipe_id=recipeRecordID, ingredient_id=ingredient, ingredientAmount=ingredientAmounts[i], ingredientMeasurement=ingredientMeasurements[i])
-  File "<string>", line 4, in __init__
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/state.py", line 441, in _initialize_instance
-    manager.dispatch.init_failure(self, args, kwargs)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 68, in __exit__
-    compat.reraise(exc_type, exc_value, exc_tb)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 153, in reraise
-    raise value
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/state.py", line 438, in _initialize_instance
-    return manager.original_init(*mixed[1:], **kwargs)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/ext/declarative/base.py", line 840, in _declarative_constructor
-    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
-TypeError: 'ingredientMeasurement' is an invalid keyword argument for recipe_ingredients
-2019-08-28 15:19:15,024 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
-2019-08-28 15:19:17,405 ERROR: Exception on /admin/submit_recipe [POST] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
+2019-08-28 15:21:19,784 ERROR: Exception on /admin/submit_recipe [POST] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1179, in _execute_context
     context = constructor(dialect, self, conn, *args)
@@ -105,5 +76,5 @@ Traceback (most recent call last):
 sqlalchemy.exc.StatementError: (raised as a result of Query-invoked autoflush; consider using a session.no_autoflush block if this flush is occurring prematurely)
 (builtins.ValueError) could not convert string to float: 'Ounc'
 [SQL: INSERT INTO "recipeIngredients" (recipe_id, ingredient_id, "ingredientAmount", "ingredientUnit") VALUES (?, ?, ?, ?)]
-[parameters: [{'ingredientUnit': '11', 'recipe_id': 1, 'ingredientAmount': 'Ounc', 'ingredient_id': <Ingredient Vanilla Wafers}]]
-2019-08-28 15:21:16,370 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
+[parameters: [{'ingredientAmount': 'Ounc', 'ingredientUnit': '11', 'recipe_id': 1, 'ingredient_id': <Ingredient Vanilla Wafers}]]
+2019-08-28 15:23:22,012 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:52]
