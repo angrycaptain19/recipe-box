@@ -1,0 +1,27 @@
+{% extends "admin_base.html" %}
+{% import 'material/wtf.html' as wtf %}
+{% import 'material/utils.html' as util %}
+
+{% block app_content %}
+	{% if form %}
+	{{ wtf.quick_form(form) }}
+	<br>
+	{% endif %}
+	<div class="row" style="float:none; display: inline-block; text-align: initial">
+
+		Hi
+	</div>
+	<nav aria-label="...">
+		<ul class="pagination">
+			<li class="{% if not prev_url %} disabled {% else %} waves-effect{% endif %}">
+				<a href="{{ prev_url or '#' }}">
+					<span aria-hidden="true">&larr;</span>Newer Posts
+				</a>
+			<li class="{% if not next_url %} disabled {% else %} waves-effect{% endif %}">
+				<a href="{{ next_url or '#' }}">
+					Older posts <span aria-hidden="true">&rarr;</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+{% endblock %}

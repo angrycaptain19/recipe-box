@@ -1,0 +1,27 @@
+{% block content %}
+	<div class="col s12 m6 l4">
+		<div class="card large">
+			<div class="card-image">
+				<img src="{{ recipe.Image }}"/>
+			</div>
+			<h5 class="card-title">
+				<a href="{{ url_for('recipe', id=recipe.id) }}">{{ recipe.recipeName }}</a>
+			</h5>
+			<p class="card-content"> 
+				Rated: {{ recipe.Rating }} Stars
+			<br>
+				Course Type: {{ recipe.mealType }}
+			</p>
+			<div class="card-tabs">
+				<ul class="tabs tabs-fixed-width">
+					<li class="tab"><a class="inactive" href="#ingredients">Ingredients</a></li>
+					<li class="tab"><a class="active" href="#instructions">Instructions</a></li>
+				</ul>
+			</div>
+			<div class="card-content grey lighten-5">
+				<p id="ingredients" style="display: none"> {{ recipe.Ingredients }}</p>
+				<p id="instructions" style="display: none"> {{ recipe.Instructions }}</p>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "admin_base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% import 'bootstrap/utils.html' as util %}
+
+{% block app_content %}
+	{% if form %}
+	{{ wtf.quick_form(form) }}
+	<br>
+	{% endif %}
+	<div>
+		<a href="{{ url_for('create_ingredient') }}" class="btn">
+			Add Ingredient
+		</a>
+	</div>
+	<div class="row" style="float:none; display: inline-block; text-align: initial">
+		<ul>
+			{% for ingredient in Ingredients %}
+				<li> 
+					<a href='#'>{{ ingredient.ingredientName }}</a>
+				</li>
+			{% endfor %}
+		</ul>	
+	</div>
+	<nav aria-label="...">
+		<ul class="pagination">
+			<li class="{% if not prev_url %} disabled {% else %} waves-effect{% endif %}">
+				<a href="{{ prev_url or '#' }}">
+					<span aria-hidden="true">&larr;</span>Newer Posts
+				</a>
+			<li class="{% if not next_url %} disabled {% else %} waves-effect{% endif %}">
+				<a href="{{ next_url or '#' }}">
+					Older posts <span aria-hidden="true">&rarr;</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+{% endblock %}

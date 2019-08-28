@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+	<h1> 
+		Add a recipe
+	</h1>
+	<div class="row">
+		<div class="col-md-4">
+			{{ wtf.quick_form(form) }}
+		</div>
+	</div>
+{% endblock %}
+<!-- 	<form action="" method="post">
+		{{ form.hidden_tag() }}
+		<p> 
+			{{ form.recipeName.label }} <br>
+			{{ form.recipeName(size=32) }} <br>
+			{% for error in form.recipeName.errors %}
+			<span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.Image.label }}<br>
+			{{ form.Image(size=32) }}<br>
+			{% for error in form.Image.errors %}
+			<span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.Ingredients.label }}<br>
+			{{ form.Ingredients(size=16) }}<br>
+			{% for error in form.Ingredients.errors %}
+			<span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.Instructions.label }}<br>
+			{{ form.Instructions(size=16) }}<br>
+			{% for error in form.Instructions.errors %}
+			<span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.Rating.label }}<br>
+			{{ form.Rating(size=16) }}<br>
+			{% for error in form.Rating.errors %}
+			<span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+		</p>			
+		<p>
+			{{ form.mainIngredient.label }}<br>
+			{{ form.mainIngredient(size=16) }}<br>
+			{% for error in form.mainIngredient.errors %}
+			<span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+		</p>			
+		<p>
+			{{ form.prepTime.label }}<br>
+			{{ form.prepTime(size=16) }}<br>
+			{% for error in form.prepTime.errors %}
+			<span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.cookTime.label }}<br>
+			{{ form.cookTime(size=16) }}<br>
+			{% for error in form.cookTime.errors %}
+			<span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+		</p>		
+		<p>
+			{{ form.submit() }}
+		</p> -->
+<!-- 	</form>-->
