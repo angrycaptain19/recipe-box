@@ -7,11 +7,13 @@
 	{{ wtf.quick_form(form) }}
 	<br>
 	{% endif %}
-	<div class="row" style="float:none; display: inline-block; text-align: initial">
+	<div class="container">
+		<div class="row" style="float:none; display: inline-block; text-align: initial">
 
-		{% for recipe in Recipes %}
-			{% include '_recipe_card.html' %}
-		{% endfor %}
+			{% for recipe in Recipes %}
+				{% include '_recipe_card.html' %}
+			{% endfor %}
+		</div>
 	</div>
 	<nav aria-label="...">
 		<ul class="pagination">
