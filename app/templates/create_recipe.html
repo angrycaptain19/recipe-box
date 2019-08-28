@@ -2,15 +2,71 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
-	<h1> 
+	<h5> 
 		Add a recipe
-	</h1>
-	<div class="row">
-		<div class="col-md-4">
-			{{ wtf.quick_form(form) }}
-		</div>
-	</div>
-{% endblock %}
+	</h5>
+	<div class="container">
+		<form action="{{ url_for('main.submit_recipe') }}" method="POST" class="col s12">
+			<div>
+				<div>
+					<input placeholder="Recipe Name", id="recipeName", name="recipeName">
+				</div>
+				<div>
+					<input placeholder="Type of Dish", id="mealType", name="mealType">
+				</div>
+				<div>
+					<input placeholder="Image URL", id="Image", name="Image">
+				</div>
+				<div>
+					<input placeholder="Prep Time (minutes)", id="prepTime", name="prepTime">
+				</div>
+				<div>
+					<input placeholder="Cook Time (minutes)", id="cookTime", name="cookTime">
+				</div>
+			</div>
+			<h5>
+				Ingredients
+			</h5>
+			<table id="Ingredient Table">
+				<thead>
+					<tr>
+						<th>Ingredient Name</th>
+						<th>Amount</th>
+						<th>Unit</th>
+					</tr>
+				</thead>
+
+				<tbody id="Ingredient Table Body">
+					<tr>
+						<td><input placeholder="Ingredient", id="ingredientName", name="ingredientName"></td>
+						<td><input placeholder="Amount", id="ingredientAmount", name="ingredientAmount"></td>
+						<td><input placeholder="Unit", id="ingredientMeasurement", name="ingredientMeasurement"></td>
+					</tr>
+				</tbody>
+			</table>
+			<a class="button" onClick="addIngredient()">
+				Add Ingredient
+			</a>
+			<h5>
+				Recipe Steps
+			</h5>			
+			<div id="recipeSteps">
+				<div>
+					<textarea placeholder="Step...", id="recipeStep", name="recipeStep"></textarea>
+				</div>
+			</div>
+			<div>
+				<a class="button" onClick="addStep()" id="addStepButton">
+				Add Step
+				</a>
+			</div>
+			<div> 
+				<a class="button">
+					<input type = "submit" value = "submit" > 
+				</a>
+			</div>
+		</form>
+	</div>{% endblock %}
 <!-- 	<form action="" method="post">
 		{{ form.hidden_tag() }}
 		<p> 

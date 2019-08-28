@@ -35,18 +35,49 @@ def recipe(id):
 
 @bp.route('/create_recipe', methods=['GET','POST'])
 def create_recipe():
-	form = RecipeForm()
-	if form.validate_on_submit():
-		#Pull in data for new recipe from form fields
-		recipe = Recipe(recipeName=form.recipeName.data, Ingredients=form.Ingredients.data, Instructions=form.Instructions.data, Image=form.Image.data, prepTime=form.prepTime.data, cookTime=form.cookTime.data, Rating=form.Rating.data, mainIngredient=form.mainIngredient.data, mealType=form.mealType.data)
+	return render_template('create_recipe.html', title='Create a Recipe')
+
+@bp.route('/submit_recipe', methods=['GET','POST'])
+def user_submit_recipe():
+	if request.method == 'POST':
+		#pull in all individual form responses. First create the Recipe record w/ no ingredients or steps
+		recipeName = request.form['recipeName']
+		mealType = request.form['mealType']
+		Image = request.form['Image']
+		prepTime = request.form['prepTime']
+		cookTime = request.form['cookTime']
+		recipeCheck = Recipe.query.filter_by(recipeName=recipeName).first()
+		if recipeCheck is not None:
+			flash('A recipe with this name already exists. Please choose a new name for your recipe')
+			return redirect(url_for('main.admin_create_recipe'))
+		recipe = Recipe(recipeName=recipeName, mealType=mealType, Image=Image, prepTime=prepTime, cookTime=cookTime)
 		db.session.add(recipe)
-		#Add new recipe to the database
+#		Pull in ingredient information, then query for the recipe we just created to get ID and create the recipeIngredients record for these ingredients
+		ingredientNames = request.form.getlist('ingredientName')
+		ingredientMeasurements = request.form.getlist('ingredientMeasurement')
+		ingredientAmounts = request.form.getlist('ingredientAmount')
+		recipeRecord = Recipe.query.filter_by(recipeName=recipeName).first()
+		recipeRecordID = recipeRecord.id
+#		Iterate over all the ingredients in the recipe Form
+		i = 0
+		for ingredientName in ingredientNames:
+#		Check if this ingredient already exists in the ingredient table and if not create an ingredient record for that ingredient
+			ingredient = Ingredients.query.filter_by(ingredientName=ingredientName).first()	
+			if ingredient is None:
+				newIngredient = Ingredients(ingredientName=ingredientName)
+				db.session.add(newIngredient)
+				ingredient = Ingredients.query.filter_by(ingredientName=ingredientName).first()
+			recipeIngredient = recipe_ingredients(recipe_id=recipeRecordID, ingredient_id=ingredient.id, ingredientAmount=ingredientAmounts[i], ingredientUnit=ingredientMeasurements[i])
+			db.session.add(recipeIngredient)
+			i + 1
+		recipeSteps = request.form.getlist('recipeStep')
+		j=0
+		for recipeStep in recipeSteps:
+			j=j+1
+			step = Recipe_Steps(recipe_id=recipeRecordID, stepNumber=j, directions=recipeStep)
+			db.session.add(step)
 		db.session.commit()
-		flash('Recipe added!')
-		return redirect(url_for('main.index'))
-	return render_template('create_recipe.html', title='Create a Recipe', form=form)
-
-
+		return  redirect(url_for('main.index'))
 #___________________________________________________
 
 # Login section:
