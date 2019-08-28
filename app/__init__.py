@@ -15,7 +15,6 @@ import os
 db = SQLAlchemy()
 migrate = Migrate()
 login = LoginManager()
-mail = Mail()
 bootstrap = Bootstrap()
 moment = Moment()
 
