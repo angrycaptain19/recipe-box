@@ -8,8 +8,13 @@
 	<br>
 	{% endif %}
 	<div class="row" style="float:none; display: inline-block; text-align: initial">
-
-		This will show a list of users
+		<ul>
+			{% for user in Users %}
+				<li> 
+					<a href='#'>{{ user.userName }}</a>
+				</li>
+			{% endfor %}
+		</ul>	
 	</div>
 	<nav aria-label="...">
 		<ul class="pagination">
