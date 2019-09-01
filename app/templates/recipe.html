@@ -9,13 +9,17 @@
 	<h2>
 		Ingredients:
 	</h2>
-	<p>
-		{{ recipe.Ingredients }}
-	</p>
+		{% for ingredient in recipe.Ingredients %}
+			<p>
+				{{ ingredient.ingredientName }}
+			</p>
+		{% endfor %}
 	<h2> 
 		Instructions:
 	</h2>
-	<p>
-		{{ recipe.Instructions }}
-	</p>
+		{% for instruction in recipe.Instructions %}
+			<p>
+				{{ instruction.directions }}
+			</p>
+		{% endfor %}
 {% endblock %}

@@ -45,3 +45,7 @@ NameError: name 'app' is not defined
 2019-08-29 08:11:56,953 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:70]
 2019-08-29 08:11:57,038 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:70]
 2019-08-29 08:11:57,039 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:70]
+2019-09-01 09:47:10,199 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:70]
+2019-09-01 09:47:10,199 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:70]
+2019-09-01 09:47:10,226 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:70]
+2019-09-01 09:47:10,257 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:70]
