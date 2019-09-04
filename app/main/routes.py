@@ -45,7 +45,11 @@ def user_submit_recipe():
 		mealType = request.form['mealType']
 		Image = request.form['Image']
 		prepTime = request.form['prepTime']
+		if prepTime is None:
+			prepTime = 0.
 		cookTime = request.form['cookTime']
+		if cookTime is None:
+			cookTime = 0.
 		recipeCheck = Recipe.query.filter_by(recipeName=recipeName).first()
 		if recipeCheck is not None:
 			flash('A recipe with this name already exists. Please choose a new name for your recipe')
@@ -186,7 +190,11 @@ def submit_recipe():
 		mealType = request.form['mealType']
 		Image = request.form['Image']
 		prepTime = request.form['prepTime']
+		if prepTime is None:
+			prepTime = 0.
 		cookTime = request.form['cookTime']
+		if cookTime is None:
+			cookTime = 0.
 		recipeCheck = Recipe.query.filter_by(recipeName=recipeName).first()
 		if recipeCheck is not None:
 			flash('A recipe with this name already exists. Please choose a new name for your recipe')

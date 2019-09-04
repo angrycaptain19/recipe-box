@@ -28,8 +28,8 @@ def load_user(id):
 class Recipe(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	recipeName = db.Column(db.String(128), index=True)
-	prepTime = db.Column(db.Integer)
-	cookTime = db.Column(db.Integer)
+	prepTime = db.Column(db.Float)
+	cookTime = db.Column(db.Float)
 	Rating = db.Column(db.Float)
 	Image = db.Column(db.String(256))
 	mainIngredient = db.Column(db.String(64))
