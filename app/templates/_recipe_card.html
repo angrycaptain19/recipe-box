@@ -1,10 +1,8 @@
 {% block content %}
 	<div class="col-s-12 col-md-6 col-l-4">
-		<div class="card">
-			<div class="card-body">
-				<div class="card-img-top">
-					<img src="{{ recipe.Image }}"/>
-				</div>
+		<div class="card" style="width: 18rem;">
+			<img src="{{ recipe.Image }}"class=" card-img-top">
+			<div class="card-body">				
 				<h5 class="card-title">
 					<a href="{{ url_for('main.recipe', id=recipe.id) }}">{{ recipe.recipeName }}</a>
 				</h5>
