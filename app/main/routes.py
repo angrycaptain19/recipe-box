@@ -14,15 +14,15 @@ def index():
 	recipeList = Recipe.query.paginate(page, current_app.config['RECIPES_PER_PAGE'],False)
 	next_url = url_for('main.index', page=recipeList.next_num) if recipeList.has_next else None
 	prev_url = url_for('main.index', page=recipeList.prev_num) if recipeList.has_prev else None
-	return render_template('index.html', Recipes = recipeList.items, next_url = next_url, prev_url=prev_url)
+	return render_template('home.html', Recipes = recipeList.items, next_url = next_url, prev_url=prev_url)
 
 @bp.route('/discover')
 def discover():
 	page = request.args.get('page', 1, type=int)
 	recipes = Recipe.query.order_by(Recipe.timestamp.desc()).paginate(page, current_app.config['RECIPES_PER_PAGE'],False)
-	next_url = url_for('main.index', page=recipes.next_num) if recipes.has_next else None
-	prev_url = url_for('main.index', page=recipes.prev_num) if recipes.has_prev else None	
-	return render_template('index.html', title='Discover', Recipes=recipes.items, next_url=next_url, prev_url=prev_url)
+	next_url = url_for('main.discover', page=recipes.next_num) if recipes.has_next else None
+	prev_url = url_for('main.discover', page=recipes.prev_num) if recipes.has_prev else None	
+	return render_template('discover.html', title='Discover', Recipes=recipes.items, next_url=next_url, prev_url=prev_url)
 
 #_________________________________________________
 # User facing recipe sections		

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% import 'bootstrap/utils.html' as util %}
+
+{% block app_content %}
+	{% if form %}
+	{{ wtf.quick_form(form) }}
+	<br>
+	{% endif %}
+	<div class="container">
+		<div class="row">
+
+			{% for recipe in Recipes %}
+				{% include '_recipe_card.html' %}
+			{% endfor %}
+		</div>
+	</div>
+	<nav aria-label="...">
+		<ul class="pagination">
+			<li class="{% if not prev_url %} disabled {% else %} waves-effect{% endif %}">
+				<a href="{{ prev_url or '#' }}">
+					<span aria-hidden="true">&larr;</span>Newer Posts
+				</a>
+			<li class="{% if not next_url %} disabled {% else %} waves-effect{% endif %}">
+				<a href="{{ next_url or '#' }}">
+					Older posts <span aria-hidden="true">&rarr;</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+	<div>
+		<p>
+			Have a new recipe? <a href="{{ url_for('main.create_recipe') }}"> Add it here </a>
+		</p>
+	</div>
+{% endblock %}
