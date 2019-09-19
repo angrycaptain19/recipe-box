@@ -14,11 +14,11 @@
 		</div>
 		<nav aria-label="...">
 			<ul class="pagination">
-				<li class="{% if not prev_url %} disabled {% else %} waves-effect{% endif %}">
+				<li class="{% if not prev_url %} disabled {% else %} page-item{% endif %}">
 					<a href="{{ prev_url or '#' }}">
 						<span aria-hidden="true">&larr;</span>Newer Posts
 					</a>
-				<li class="{% if not next_url %} disabled {% else %} waves-effect{% endif %}">
+				<li class="{% if not next_url %} disabled {% else %} page-item{% endif %}">
 					<a href="{{ next_url or '#' }}">
 						Older posts <span aria-hidden="true">&rarr;</span>
 					</a>
