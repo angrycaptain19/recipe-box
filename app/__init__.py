@@ -10,6 +10,7 @@ from flask_moment import Moment
 import logging
 from logging.handlers import SMTPHandler
 from logging.handlers import RotatingFileHandler
+from elasticsearch import Elasticsearch
 import os
 
 db = SQLAlchemy()
@@ -21,6 +22,8 @@ moment = Moment()
 def create_app(config_class=Config):
 
     app = Flask(__name__)
+    UPLOAD_FOLDER = '/app/static/images'
+    ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
     app.config.from_object(config_class)
 
     db.init_app(app)
@@ -28,6 +31,10 @@ def create_app(config_class=Config):
     login.init_app(app)
     bootstrap.init_app(app)
     moment.init_app(app)
+    login.login_view = 'main.login'
+
+    app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']]) \
+        if app.config['ELASTICSEARCH_URL'] else None    
 
     from app.errors import bp as errors_bp
     app.register_blueprint(errors_bp)

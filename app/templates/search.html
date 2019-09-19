@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+	<div class="container">
+		<h5 style="margin-top:10px"> Recipe results </h5>
+			{% for recipe in recipes %}
+				{% include '_recipe_card.html' %}
+			{% endfor %}
+		{% if collections|length %}	
+			<h5 style="margin-top:10px"> Collection results </h5>
+				{% for collection in collections %}
+					{% include '_collection_card.html' %}
+				{% endfor %}			
+		{% else %}
+		{% endif %}	
+	</div>
+{% endblock %}

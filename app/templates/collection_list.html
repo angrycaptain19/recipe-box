@@ -1,28 +1,22 @@
 {% extends "base.html" %}
-{% import 'bootstrap/wtf.html' as wtf %}
-{% import 'bootstrap/utils.html' as util %}
 
 {% block app_content %}
-	{% if form %}
-	{{ wtf.quick_form(form) }}
-	<br>
-	{% endif %}
 	<div class="container" style="margin-top:25px;">
 		<div class="row">
 			<div class="col">
 				<h4>
-					Browse Recipes
+					Browse Collections
 				</h4>
 			</div>
 			<div class="col col-lg-3 col-sm-10">
-				<a class="btn btn-primary" href="{{ url_for('main.create_recipe') }}">
-					Create a new recipe
+				<a class="btn btn-primary" href="{{ url_for('main.create_collection') }}">
+					Create a new collection
 				</a>
 			</div>
 		</div>
-		<div class="row" style="margin-top:25px;">
-			{% for recipe in Recipes %}
-				{% include '_recipe_card.html' %}
+		<div class="row">
+			{% for collection in collections %}
+				{% include '_collection_card.html' %}
 			{% endfor %}
 		</div>
 	
@@ -30,11 +24,11 @@
 			<ul class="pagination">
 				<li class="{% if not prev_url %} disabled {% else %} page-item{% endif %}">
 					<a href="{{ prev_url or '#' }}" class="page-link">
-						<span aria-hidden="true">&larr;</span>Newer Posts
+						<span aria-hidden="true">&larr;</span>Newer Collections
 					</a>
 				<li class="{% if not next_url %} disabled {% else %} page-item{% endif %}">
 					<a href="{{ next_url or '#' }}" class="page-link">
-						Older posts <span aria-hidden="true">&rarr;</span>
+						Older Collections <span aria-hidden="true">&rarr;</span>
 					</a>
 				</li>
 			</ul>

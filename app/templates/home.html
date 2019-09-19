@@ -1,80 +1,63 @@
 {% extends "base.html" %}
 {% block app_content %}
 	<div class="container">
-		<h5>
+		<h5 style="margin-top:10px">
 			Featured Cookbooks
 		</h5>
 		<div class="section-container">
 			<div class="row" id="featured_cookbooks_row">
-				<div class="col-sm-12 col-md-6 col-lg-4">
-					<img src="https://images-na.ssl-images-amazon.com/images/I/61zge0AJoCL.jpg" href="#" alt="Tartine Bread" style="max-width:100%; max-height:385px; margin:auto"/>
-				</div>
-				<div class="col-sm-12 col-md-6 col-lg-4">
-					<img src="https://images-na.ssl-images-amazon.com/images/I/91x7DKhSLlL.jpg" href="#" alt="Ottolenghi" style="max-width:100%; max-height:385px; margin:auto"/>
-				</div>
-				<div class="col-sm-12 col-md-6 col-lg-4">
-					<img src="https://images-na.ssl-images-amazon.com/images/I/51BWajFXsHL._SX384_BO1,204,203,200_.jpg" href="#" alt="30 Minute Curries" style="max-width:100%; max-height:385px; margin:auto"/>
-				</div>
+				{% for book in Books %}
+					<div class="col-sm-12 col-md-6 col-lg-4">
+						<a href="{{ url_for('main.book', id=book.id) }}">
+							<img src="{{ book.photoURL }}" alt="{{ book.name }}" style="max-width:100%; max-height:385px; margin:auto">
+						</a>
+					</div>
+				{% endfor %}
 			</div>
-			<div class="see_more_bar" style="text-align:right;"> 
-				<a href="#">See all books -></a>
+			<div class="see_more_bar" style="text-align:right;">
+				<a href="{{ url_for('main.book_list') }}">See all Books -></a>
 			</div>
 		</div>
-		<h5>
-			Top Collections
+		<h5 style="margin-top:10px">
+			Featured Collections
 		</h5>
 		<div class="section-container">
-			<div class="row" id="featured_cookbooks_row" style="vertical-align:center;">
-				<div class="col-sm-12 col-md-6 col-lg-4">
-					<img src="https://www.sainsburysmagazine.co.uk/media/7130/download/Rosemary-roasted-carrots.jpg?v=1" href="#" alt="Vegetarian Collection" style="max-width:100%; max-height:385px; margin:auto"/>
-					<h6>
-						Vegetarian 
-					</h6>
-				</div>
-				<div class="col-sm-12 col-md-6 col-lg-4" style="vertical-align:center;">
-					<img src="https://img1.cookinglight.timeinc.net/sites/default/files/styles/4_3_horizontal_-_1200x900/public/1513287585/zesty-kale-and-sweet-potato-bowl-1801-ck.jpg?itok=E13NqA9u" href="#" alt="Grain Bowl Collection" style="max-width:100%; max-height:385px; margin:auto"/>
-					<h6>
-						Grain Bowls
-					</h6>
-				</div>
-				<div class="col-sm-12 col-md-6 col-lg-4" style="vertical-align:center;">
-					<img src="https://prods3.imgix.net/images/articles/2015_11/Social-Updated-Coffee-Chocolate-Cinnamon-Pecan-Pie-Thanksgiving-Entertaining-Dessert-Recipe-Magpie-Artisan-Pie-Philadelphia-Holly-Ricciardi-Miriam-Harris.jpg" href="#" alt="Pies &amp; More Collection" style="max-width:100%; max-height:385px; margin:auto"/>
-					<h6>
-						Pies &amp; More
-					</h6>
-				</div>
+			<div class="row" id="featured_collections_row" style="vertical-align:center">
+				{% for collection in Collections %}
+					<div class="col-sm-12 col-md-6 col-lg-4">
+						<a href="{{ url_for('main.collection', id=collection.id) }}">
+							<img src="{{ collection.photoURL }}" alt="{{ collection.collection_name }}" style="max-width:100%; max-height:385px; margin:auto;">
+						</a>
+						<h6>
+							{{ collection.collection_name }}
+						</h6>
+					</div>
+				{% endfor %}
 			</div>
-			<div class="see_more_bar" style="text-align:right;"> 
-				<a href="#">See all collections -></a>
+			<div class="see_more_bar" style="text-align:right;">
+				<a href="{{ url_for('main.collection_list') }}">See all Collections -></a>
+			</div>
+		</div>
+		<h5 style="margin-top:10px">
+			Featured Recipes
+		</h5>
+		<div class="section-container">
+			<div class="row" id="featured_collections_row" style="vertical-align:center">
+				{% for recipe in Recipes %}
+					<div class="col-sm-12 col-md-6 col-lg-4">
+						<a href="{{ url_for('main.recipe', id=recipe.id) }}">
+							<img src="{{ recipe.Image }}" alt="{{ recipe.recipeName }}" style="max-width:100%; max-height:385px; margin:auto;">
+						</a>
+						<h6>
+							{{ recipe.recipeName }}
+						</h6>
+					</div>
+				{% endfor %}	
+			</div>
+			<div class="see_more_bar" style="text-align:right;">
+				<a href="{{ url_for('main.discover') }}">See all Recipes -></a>
 			</div>
 		</div>		
-		<h5>
-			Featured Ingredients
-		</h5>
-		<div class="section-container">
-			<div class="row" id="featured_cookbooks_row" style="vertical-align:center;">
-				<div class="col-sm-12 col-md-6 col-lg-4">
-					<img src="https://www.sainsburysmagazine.co.uk/media/7130/download/Rosemary-roasted-carrots.jpg?v=1" href="#" alt="Swiss Chard" style="max-width:100%; max-height:385px; margin:auto"/>
-					<h6>
-						Swiss Chard 
-					</h6>
-				</div>
-				<div class="col-sm-12 col-md-6 col-lg-4" style="vertical-align:center;">
-					<img src="https://img1.cookinglight.timeinc.net/sites/default/files/styles/4_3_horizontal_-_1200x900/public/1513287585/zesty-kale-and-sweet-potato-bowl-1801-ck.jpg?itok=E13NqA9u" href="#" alt="Salmon" style="max-width:100%; max-height:385px; margin:auto"/>
-					<h6>
-						Salmon
-					</h6>
-				</div>
-				<div class="col-sm-12 col-md-6 col-lg-4" style="vertical-align:center;">
-					<img src="https://prods3.imgix.net/images/articles/2015_11/Social-Updated-Coffee-Chocolate-Cinnamon-Pecan-Pie-Thanksgiving-Entertaining-Dessert-Recipe-Magpie-Artisan-Pie-Philadelphia-Holly-Ricciardi-Miriam-Harris.jpg" href="#" alt="Quinoa &amp; More Collection" style="max-width:100%; max-height:385px; margin:auto"/>
-					<h6>
-						Quinoa
-					</h6>
-				</div>
-			</div>
-			<div class="see_more_bar" style="text-align:right;"> 
-				<a href="#">See all ingredients -></a>
-			</div>
-		</div>			
+	
 	</div>	
 {% endblock %}

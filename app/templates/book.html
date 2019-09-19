@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+	<div class="container" style="margin-top:25px;">
+		<div class="row">
+			<div class="col">
+				<img src="{{ book.photoURL }}" style="max-width:100%"/>
+			</div>
+			<div class="col col-lg-4 col-sm-12">
+				<h5>
+					{{ book.book_name }}
+				</h5>
+				<h6>
+					{{ book.author }}
+				</h6>
+			</div>
+		</div>
+		<div class="row" style="margin-top:10px;">
+			<h5>
+				Recipes in this book
+			</h5>
+		</div>		
+ 		<div class="row">
+			{% for recipe in book.recipes %}
+					{% include '_recipe_card.html' %}
+			{% endfor %}
+		</div>		
+	</div>
+{% endblock %}

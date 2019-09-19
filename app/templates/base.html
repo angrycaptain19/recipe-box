@@ -21,11 +21,11 @@
 			input1.setAttribute('id','ingredientName');
 			input1.setAttribute('name','ingredientName');
 			input2.setAttribute('placeholder','Amount');
-			input2.setAttribute('id','ingredientMeasurement');
-			input2.setAttribute('name','ingredientMeasurement')
+			input2.setAttribute('id','ingredientAmount');
+			input2.setAttribute('name','ingredientAmount')
 			input3.setAttribute('placeholder','Unit');
-			input3.setAttribute('id','ingredientAmount');
-			input3.setAttribute('name','ingredientAmount')
+			input3.setAttribute('id','ingredientMeasurement');
+			input3.setAttribute('name','ingredientMeasurement')
 	};			
 		</script>
 		<script>
@@ -38,6 +38,8 @@
 			newInput.setAttribute('placeholder','Step...');
 			newInput.setAttribute('id','recipeStep');
 			newInput.setAttribute('name','recipeStep');
+			newInput.setAttribute('class','form-control')
+			newInput.setAttribute('style','margin-top:5px; rows:3;')
 		};
 		</script>
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -46,17 +48,44 @@
 	</head>
 	<body>
 
-		{% block navbar %}
-			<nav class ="navbar navbar-expand-lg navbar-light bg-light">
-				<div  class="collapse navbar-collapse" id="navbarNav">
-	        		<ul class="navbar-nav">
-	        			<li class="nav-item"><a class="nav-link" href="{{ url_for('main.index') }}">Home</a></li>
-	        			<li class="nav-item"><a class="nav-link" href="{{ url_for('main.discover') }}">Discover</a></li>
-	        			<li class="nav-item"><a class="nav-link" href="{{ url_for('main.logout') }}">Logout</a></li>
-	    			</ul>	
-				</div>
-			</nav>
-		{% endblock %}
+		<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #bee8c7;">
+			<a class="navbar-brand" href="#">2Spoons</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		 		<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+					<li class="nav-item">
+						<a class="nav-link" href="{{ url_for('main.index') }}">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ url_for('main.discover') }}">Discover</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ url_for('main.collection_list') }}">Collections</a>
+					</li>					
+					{% if current_user.isAdmin %}
+						<li class="nav-item">
+							<a class="nav-link" href="{{ url_for('main.manage_ingredients') }}">Admin</a>
+						</li>
+					{% endif %}
+					{% if current_user.is_anonymous %}
+						<li class="nav-item">
+							<a class="nav-link" href="{{ url_for('main.login') }}">Login</a>
+						</li>	
+					{% else %}
+						<li class="nav-item">
+							<a class="nav-link" href="{{ url_for('main.logout') }}">Logout</a>
+						</li>						
+					{% endif %}
+				</ul>
+				<form class="form-inline my-2 my-lg-0" method="post" action="{{ url_for('main.search') }}">		
+					<input class="form-control mr-sm-2" type="text" placeholder="search" name="search">
+					<button class="btn btn-secondary my-2 my-sm-0">Search</button>
+				</form>
+			<div>
+		</nav>									
 
 		{% block content %}
 		<!-- 	<div class="container">
@@ -69,6 +98,6 @@
 				{% endwith %}
 			</div> -->
 				{% block app_content %}{% endblock %}
-		{% endblock %}
+		{% endblock %}		
 	</body>
 </html>

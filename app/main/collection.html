@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<img src="{{ collection.photoURL }}" style="max-width:100%; height=auto" />
+			</div>
+			<div class="col">
+				<h5>
+					{{ collection.collection_name }}
+				</h5>
+				<p>
+					{{ collection.description }}
+				</p>
+			</div>
+		</div>
+ 		<div class="row">
+ 			<h5> Where us this going??? </h5>
+			{% for recipe in collection.recipes %}
+					<h6> {{ recipe.recipeName }} </h6>
+					{% include '_recipe_card.html' %}
+			{% endfor %}
+		</div>		
+	</div>
+{% endblock %}

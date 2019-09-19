@@ -39,9 +39,17 @@ class RegistrationForm(FlaskForm):
 		if user is not None:
 			raise ValidationError('Please use a different email address')
 
+class collectionForm(FlaskForm):
+	collectionName = StringField('Collection Name', validators=[DataRequired()])
+	collectionDescription = StringField('Description', validators=[DataRequired()])
+	photoURL = StringField('Photo URL', validators=[DataRequired()])
+	submit = SubmitField('Create Collection')
+
 class IngredientForm(FlaskForm):
 	ingredientName = StringField('Ingredient Name', validators=[DataRequired()])
 	ingredientType = StringField('Ingredient Type', validators=[DataRequired()])
 	measurementUnit = StringField('Standard Mesurement Unit', validators=[DataRequired()])
 	standardUnitAmount = StringField('Standard Measurement Amount', validators=[DataRequired()])
 	submit = SubmitField('Create Ingredient')
+
+

@@ -2,24 +2,62 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
-	<h1> 
-		{{ recipe.recipeName }}
-	</h1>
-	<img src="{{ recipe.Image }}" />
-	<h2>
-		Ingredients:
-	</h2>
-		{% for ingredient in recipe.Ingredients %}
-			<p>
-				{{ ingredient.ingredientName }}
-			</p>
-		{% endfor %}
-	<h2> 
-		Instructions:
-	</h2>
-		{% for instruction in recipe.Instructions %}
-			<p>
-				{{ instruction.directions }}
-			</p>
-		{% endfor %}
+	<div class="container" style="margin-top:25px;">
+		<div class="row">
+			<div class="col">
+				<img src="{{ recipe.Image }}" style="width:100%; height:auto;">
+			</div>
+			<div class="col col-lg-4 col-sm-12">
+				<h4>
+					{{ recipe.recipeName }}
+				</h4>
+				<h6>
+					Cook Time: {{ recipe.cookTime }} Minutes
+					<br>
+					Prep Time: {{ recipe.prepTime }} Minutes
+				</h6>
+				{% if current_user.is_anonymous %}
+				{% else %}
+					<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="collections-btn">Add To Collection</button>
+					<div class="dropdown-menu">
+						{% for collection in user_collections %}
+							<a class="dropdown-item" href="{{ url_for('main.add_to_collection', current_collection=collection.id, current_recipe=recipe.id) }}"> {{ collection.collection_name }} </a>
+						{% endfor %}
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="{{ url_for('main.create_collection')
+						 }}"> + New Collection </a>
+					 </div>
+				 {% endif %}
+
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-lg-4 col-sm-12">
+				<h5>
+					Ingredients:
+				</h5>
+				<table>
+					{% for ingredient in recipe.Ingredients %}
+						<tr>
+							<td>{{ ingredient.ingredientName }}</td>
+							<td>{{ ingredient.ingredientAmount}} {{ingredient.ingredientUnit}}</td>
+						</tr>
+					{% endfor %}
+				</table>
+			</div>
+			<div class="col">
+				<h5>
+					Instructions:
+				</h5>
+				<ul>
+					{% for instruction in recipe.Instructions %}
+						<li>
+							{{ instruction.directions }}
+						</li>
+					{% endfor %}			
+				</ul>
+			</div>
+		</div>
+	</div>
+
 {% endblock %}

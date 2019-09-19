@@ -8,10 +8,23 @@
 	<br>
 	{% endif %}
 	<div>
-		<a href="{{ url_for('main.admin_create_recipe') }}" class="btn">
+		<a href="{{ url_for('main.admin_create_recipe') }}" class="btn btn-primary">
 			Add Recipe
 		</a>
 	</div>
+	{% for recipe in Recipes %}
+		<div class="row">
+			<div>
+				{{ recipe.recipeName }}
+			</div>
+			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Add to Book</button>
+			<div class="dropdown-menu">
+				{% for book in books %}
+					<a class="dropdown-item" href="{{ url_for('main.add_to_book', current_book=book.id, current_recipe=recipe.id) }}">{{ book.book_name }} </a>
+				{% endfor %}
+			</div>
+		</div>
+	{% endfor %}
 	<div class="row" style="float:none; display: inline-block; text-align: initial">
 		<ul>
 			{% for recipe in Recipes %}

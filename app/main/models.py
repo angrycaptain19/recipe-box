@@ -86,7 +86,7 @@ class Recipe(db.Model):
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 	Instructions = db.relationship('Recipe_Steps', backref="Recipe", lazy="dynamic")
 #	Ingredients = []	
-	Ingredients = db.relationship('recipe_ingredients', backref="Recipe", lazy="dynamic")
+	Ingredients = db.relationship('Ingredients', secondary="recipeIngredients")
 	collections = db.relationship('collections', secondary="recipeCollections")
 	saved_by = db.relationship('User', secondary="user_savedRecipes")
 
@@ -103,7 +103,7 @@ class Ingredients(db.Model):
 	# Defines a standard unit (eg gram) that the ingredient is measured in
 	measurementUnit = db.Column(db.String(128))
 	# Defines the standard amount of the standard unit - eg 100 grams
-	standardUnitAmount = db.Column(db.String)
+	standardUnitAmount = db.Column(db.Integer)
 #	recipes = []
 	recipes = db.relationship('Recipe', secondary='recipeIngredients')	
 
@@ -127,8 +127,7 @@ class recipe_ingredients(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	recipe_id = db.Column(db.Integer, db.ForeignKey('recipe.id'))
 	ingredient_id = db.Column(db.Integer, db.ForeignKey('ingredients.id'))
-	ingredientName = db.Column(db.String)
-	ingredientAmount = db.Column(db.String)
+	ingredientAmount = db.Column(db.Float)
 	ingredientUnit = db.Column(db.String)
 
 	recipe = db.relationship(Recipe, backref=backref("recipe_ingredients",cascade="all, delete-orphan"))
@@ -143,7 +142,7 @@ class collections(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	collection_name = db.Column(db.String(256))
 	description = db.Column(db.String)
-	created_by = db.Column(db.String, db.ForeignKey('user.username'))
+	created_by = db.Column(db.Integer, db.ForeignKey('user.username'))
 	photoURL = db.Column(db.String)
 	recipes = db.relationship('Recipe', secondary='recipeCollections')
 	followers = db.relationship('User', secondary='collectionFollowers')

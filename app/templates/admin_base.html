@@ -46,17 +46,16 @@
 	</head>
 	<body>
 		{% block navbar %}
-			<nav class ="navbar navbar-default">
-				<div  class="container">
-					<div class="navbar-header">
-		        		<ul class="nav navbar-nav">
-		        			<li><a href="{{ url_for('main.manage_ingredients') }}">Ingredients</a></li>
-		        			<li><a href="{{ url_for('main.manage_recipes') }}">Recipes</a></li>
-		        			<li><a href="{{ url_for('main.manage_users') }}">Users</a></li>
-		        			<li><a href="{{ url_for('main.logout') }}">Logout</a></li>
+			<nav class ="navbar navbar-expand-lg navbar-light bg-light">
+				<div  class="collapse navbar-collapse" id="navbarNav">
+	        		<ul class="navbar-nav">
+	        			<li class="nav-item"><a class="nav-link" href="{{ url_for('main.manage_ingredients') }}">Ingredients</a></li>
+	        			<li class="nav-item"><a class="nav-link" href="{{ url_for('main.manage_recipes') }}">Recipes</a></li>
+	        			<li class="nav-item"><a class="nav-link" href="{{ url_for('main.manage_users') }}">Users</a></li>
+	        			<li class="nav-item"><a class="nav-link" href="{{ url_for('main.manage_books') }}">Books</a></li>
+	        			<li class="nav-item"><a class="nav-link" href="{{ url_for('main.logout') }}">Logout</a></li>
 
-		    			</ul>
-					</div>
+	    			</ul>
 				</div>
 			</nav>
 		{% endblock %}

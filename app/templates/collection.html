@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+	<div class="container" style="margin-top:25px;">
+		<div class="row">
+			<div class="col">
+				<img src="{{ collection.photoURL }}" style="max-width:100%; height=auto" />
+			</div>
+			<div class="col col-lg-4 col-sm-12">
+				<h5>
+					{{ collection.collection_name }}
+				</h5>
+				<h6 style="margin-bottom:0px;">
+					Created by: {{ collection.created_by}}
+				</h6>
+				<p>
+					{{ collection.description }}
+				</p>
+			</div>
+		</div>
+		<div class="row" style="margin-top:10px;">
+			<h5>
+				Recipes in this collection
+			</h5>
+		</div>
+ 		<div class="row">
+			{% for recipe in collection.recipes %}
+					{% include '_recipe_card.html' %}
+			{% endfor %}
+		</div>		
+	</div>
+{% endblock %}
