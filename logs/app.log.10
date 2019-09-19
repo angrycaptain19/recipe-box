@@ -1,4 +1,4 @@
-2019-09-18 15:57:19,636 ERROR: Exception on /submit_recipe [POST] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
+2019-09-18 15:57:29,776 ERROR: Exception on /submit_recipe [POST] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1179, in _execute_context
     context = constructor(dialect, self, conn, *args)
@@ -76,8 +76,4 @@ Traceback (most recent call last):
 sqlalchemy.exc.StatementError: (raised as a result of Query-invoked autoflush; consider using a session.no_autoflush block if this flush is occurring prematurely)
 (builtins.ValueError) could not convert string to float: 
 [SQL: INSERT INTO "recipeIngredients" (recipe_id, ingredient_id, "ingredientAmount", "ingredientUnit") VALUES (?, ?, ?, ?)]
-[parameters: [{'ingredientAmount': '', 'ingredientUnit': '', 'recipe_id': 3, 'ingredient_id': 3}]]
-2019-09-18 15:57:29,592 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:75]
-2019-09-18 15:57:29,607 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:75]
-2019-09-18 15:57:29,616 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:75]
-2019-09-18 15:57:29,635 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:75]
+[parameters: [{'ingredientUnit': '', 'ingredient_id': 3, 'ingredientAmount': '', 'recipe_id': 3}]]

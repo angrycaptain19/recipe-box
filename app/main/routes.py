@@ -38,7 +38,8 @@ def recipe(id):
 	recipe = Recipe.query.filter_by(id=id).first_or_404()
 	user_collections = []
 	if current_user.is_anonymous != True:
-		user_collections = collections.query.filter_by(created_by=current_user.id).all()
+		user = User.query.filter_by(id=current_user.id).all()
+		user_collections = user.created_Collections
 	return render_template('recipe.html', recipe=recipe, user_collections=user_collections)
 	
 
