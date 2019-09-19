@@ -119,7 +119,7 @@ def collection(id):
 def create_collection():
 	form = collectionForm()
 	if form.validate_on_submit():
-		collection = collections(collection_name=form.collectionName.data, description=form.collectionDescription.data, photoURL=form.photoURL.data, created_by=current_user.id)
+		collection = collections(collection_name=form.collectionName.data, description=form.collectionDescription.data, photoURL=form.photoURL.data, created_by_2=current_user.id)
 		user = User.query.filter_by(id=current_user.id).first()
 		db.session.add(collection)
 		db.session.commit()
