@@ -39,7 +39,7 @@ def recipe(id):
 	user_collections = []
 	if current_user.is_anonymous != True:
 		user = User.query.filter_by(id=current_user.id).all()
-		user_collections = user.created_Collections
+		user_collections = collections.query.filter_by(created_by_2=current_user.id)
 	return render_template('recipe.html', recipe=recipe, user_collections=user_collections)
 	
 
@@ -120,6 +120,7 @@ def create_collection():
 	form = collectionForm()
 	if form.validate_on_submit():
 		collection = collections(collection_name=form.collectionName.data, description=form.collectionDescription.data, photoURL=form.photoURL.data, created_by=current_user.id)
+		user = User.query.filter_by(id=current_user.id).first()
 		db.session.add(collection)
 		db.session.commit()
 		return redirect(url_for('main.collection_list'))
