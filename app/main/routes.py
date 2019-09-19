@@ -55,11 +55,6 @@ def user_submit_recipe():
 		mealType = request.form['mealType']
 		Image = request.form['Image']
 		prepTime = request.form['prepTime']
-		if prepTime is None or "" or " ":
-			prepTime = 0.
-		cookTime = request.form['cookTime']
-		if cookTime is None or "" or " ":
-			cookTime = 0.
 		recipeCheck = Recipe.query.filter_by(recipeName=recipeName).first()
 		if recipeCheck is not None:
 			flash('A recipe with this name already exists. Please choose a new name for your recipe')
@@ -74,20 +69,11 @@ def user_submit_recipe():
 		ingredientNames = request.form.getlist('ingredientName')
 		ingredientMeasurements = request.form.getlist('ingredientMeasurement')
 		ingredientAmounts = request.form.getlist('ingredientAmount')
-		print("Names:")
-		print(ingredientNames)
-		print("Measurements") 
-		print(ingredientMeasurements)
-		print("Amounts")
-		print(ingredientAmounts)
-		print(ingredientMeasurements[1])
-		print(ingredientAmounts[1])
 		recipeRecord = Recipe.query.filter_by(recipeName=recipeName).first()
 		recipeRecordID = recipeRecord.id
 #		Iterate over all the ingredients in the recipe Form
 		i = 0
 		for ingredientName in ingredientNames:
-			print(i)
 #		Check if this ingredient already exists in the ingredient table and if not create an ingredient record for that ingredient
 			ingredient = Ingredients.query.filter_by(ingredientName=ingredientName).first()	
 			if ingredient is None:
@@ -132,7 +118,7 @@ def collection(id):
 def create_collection():
 	form = collectionForm()
 	if form.validate_on_submit():
-		collection = collections(collection_name=form.collectionName.data, description=form.collectionDescription.data, photoURL=form.photoURL.data)
+		collection = collections(collection_name=form.collectionName.data, description=form.collectionDescription.data, photoURL=form.photoURL.data, created_by=current_user.id)
 		db.session.add(collection)
 		db.session.commit()
 		return redirect(url_for('main.collection_list'))

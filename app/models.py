@@ -52,7 +52,6 @@ class User(UserMixin, db.Model):
 	password_hash = db.Column(db.String(128))
 	isAdmin = db.Column(db.Boolean)
 	createdRecipes = db.relationship('Recipe', backref="created by", lazy="dynamic")
-	createdCollections = db.relationship('collections', backref="created by", lazy="dynamic")
 	savedRecipes = db.relationship('Recipe', secondary="user_savedRecipes")
 #	followed_Collections = db.relationship('collections', secondary='collectionFollowers', primaryjoin=('collection_followers.c.follower_id' == id), secondaryjoin=('collection_followers.c.collection_id' == id), backref=db.backref('collectionFollowers', lazy="dynamic"), lazy="dynamic")
 	followed_Collections = db.relationship('collections', secondary="collectionFollowers")
