@@ -143,7 +143,7 @@ class collections(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	collection_name = db.Column(db.String(256))
 	description = db.Column(db.String)
-	created_by = db.Column(db.Integer, db.ForeignKey('user.id'))
+	created_by = db.Column(db.Integer)
 	photoURL = db.Column(db.String)
 	recipes = db.relationship('Recipe', secondary='recipeCollections')
 	followers = db.relationship('User', secondary='collectionFollowers')
