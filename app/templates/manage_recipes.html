@@ -38,11 +38,11 @@
 		<nav aria-label="...">
 			<ul class="pagination">
 				<li class="{% if not prev_url %} disabled {% else %} page-item{% endif %}">
-					<a href="{{ prev_url or '#' }}">
+					<a href="{{ prev_url or '#' }}" class="page-link">
 						<span aria-hidden="true">&larr;</span>Newer Posts
 					</a>
 				<li class="{% if not next_url %} disabled {% else %} page-item{% endif %}">
-					<a href="{{ next_url or '#' }}">
+					<a href="{{ next_url or '#' }}" class="page-link">
 						Older posts <span aria-hidden="true">&rarr;</span>
 					</a>
 				</li>
