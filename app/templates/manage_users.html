@@ -7,26 +7,28 @@
 	{{ wtf.quick_form(form) }}
 	<br>
 	{% endif %}
-	<div class="row" style="float:none; display: inline-block; text-align: initial">
-		<ul>
-			{% for user in Users %}
-				<li> 
-					<a href='#'>{{ user.username }}</a>
+	<div class="collection">
+		<div class="row" style="float:none; display: inline-block; text-align: initial">
+			<ul>
+				{% for user in Users %}
+					<li> 
+						<a href='#'>{{ user.username }}</a>
+					</li>
+				{% endfor %}
+			</ul>	
+		</div>
+		<nav aria-label="...">
+			<ul class="pagination">
+				<li class="{% if not prev_url %} disabled {% else %} waves-effect{% endif %}">
+					<a href="{{ prev_url or '#' }}">
+						<span aria-hidden="true">&larr;</span>Newer Posts
+					</a>
+				<li class="{% if not next_url %} disabled {% else %} waves-effect{% endif %}">
+					<a href="{{ next_url or '#' }}">
+						Older posts <span aria-hidden="true">&rarr;</span>
+					</a>
 				</li>
-			{% endfor %}
-		</ul>	
+			</ul>
+		</nav>
 	</div>
-	<nav aria-label="...">
-		<ul class="pagination">
-			<li class="{% if not prev_url %} disabled {% else %} waves-effect{% endif %}">
-				<a href="{{ prev_url or '#' }}">
-					<span aria-hidden="true">&larr;</span>Newer Posts
-				</a>
-			<li class="{% if not next_url %} disabled {% else %} waves-effect{% endif %}">
-				<a href="{{ next_url or '#' }}">
-					Older posts <span aria-hidden="true">&rarr;</span>
-				</a>
-			</li>
-		</ul>
-	</nav>
 {% endblock %}
