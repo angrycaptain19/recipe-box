@@ -132,7 +132,7 @@ def collection(id):
 def create_collection():
 	form = collectionForm()
 	if form.validate_on_submit():
-		collection = collections(collection_name=form.collectionName.data, description=form.collectionDescription.data, photoURL=form.photoURL.data, created_by=current_user.id)
+		collection = collections(collection_name=form.collectionName.data, description=form.collectionDescription.data, photoURL=form.photoURL.data)
 		db.session.add(collection)
 		db.session.commit()
 		return redirect(url_for('main.collection_list'))
