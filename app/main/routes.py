@@ -56,6 +56,7 @@ def user_submit_recipe():
 		mealType = request.form['mealType']
 		Image = request.form['Image']
 		prepTime = request.form['prepTime']
+		cookTime = request.form['cookTime']
 		recipeCheck = Recipe.query.filter_by(recipeName=recipeName).first()
 		if recipeCheck is not None:
 			flash('A recipe with this name already exists. Please choose a new name for your recipe')
