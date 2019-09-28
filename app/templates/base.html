@@ -57,13 +57,13 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 					<li class="nav-item">
-						<a class="nav-link" href="{{ url_for('main.index') }}">Home</a>
+						<a class="nav-link" href="{{ url_for('main.discover') }}">Explore Recipes</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="{{ url_for('main.discover') }}">Discover</a>
+						<a class="nav-link" href="{{ url_for('main.my_recipes') }}">My Recipes</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="{{ url_for('main.collection_list') }}">Collections</a>
+						<a class="nav-link" href="{{ url_for('main.recipeSubmission') }}">Submit a Recipe</a>
 					</li>					
 					{% if current_user.isAdmin %}
 						<li class="nav-item">

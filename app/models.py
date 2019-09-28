@@ -53,7 +53,7 @@ class User(UserMixin, db.Model):
 	isAdmin = db.Column(db.Boolean)
 	createdCollections = db.relationship('collections', backref="created_by", lazy="dynamic")
 	createdRecipes = db.relationship('Recipe', backref="created by", lazy="dynamic")
-	savedRecipes = db.relationship('Recipe', secondary="user_savedRecipes")
+	savedRecipes = db.relationship('savedrecipes', backref="saved by", lazy="dynamic")
 #	followed_Collections = db.relationship('collections', secondary='collectionFollowers', primaryjoin=('collection_followers.c.follower_id' == id), secondaryjoin=('collection_followers.c.collection_id' == id), backref=db.backref('collectionFollowers', lazy="dynamic"), lazy="dynamic")
 	followed_Collections = db.relationship('collections', secondary="collectionFollowers")
 #	followed_books = db.relationship('books', secondary='bookFollowers', primaryjoin=('book_followers.c.follower_id' == id), secondaryjoin=('book_followers.c.book_id' == id), backref=db.backref('bookFollowers', lazy="dynamic"), lazy="dynamic")
@@ -89,8 +89,7 @@ class Recipe(db.Model):
 #	Ingredients = []	
 	Ingredients = db.relationship('recipe_ingredients', backref="Recipe", lazy="dynamic")
 	collections = db.relationship('collections', secondary="recipeCollections")
-	saved_by = db.relationship('User', secondary="user_savedRecipes")
-
+	savedRecipes = db.relationship('savedrecipes', backref="saved recipe", lazy="dynamic")
 
 	def __repr__(self):
 		return '<Recipe {}>'.format(self.recipeName)
@@ -192,13 +191,52 @@ class book_followers(db.Model):
 	book_id = db.Column(db.Integer, db.ForeignKey('books.id'))
 #	book = db.relationship(books, backref=backref("book_followers", cascade="all, delete-orphan"))
 
-
-class user_savedrecipes(db.Model):
-	__tablename__ = "user_savedRecipes"
+class savedrecipes(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	saved_user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 	saved_recipe_id = db.Column(db.Integer, db.ForeignKey('recipe.id'))
 
 
 
+class Recipe2(db.Model):
+	# __searchable__ = ['Ingredients']
+	id = db.Column(db.Integer, primary_key=True)
+	recipeURL = db.Column(db.String, index=True)
+	recipeName = db.Column(db.String(128), index=True)
+	ratingCount = db.Column(db.Integer)
+	ratingValue = db.Column(db.Float)
+	image_url = db.Column(db.String(256))
+	description = db.Column(db.String)
+	author = db.Column(db.String)
+	keywords = db.Column(db.String)
+	recipeCategory = db.Column(db.String)
+	recipeCuisine = db.Column(db.String)
+	recipeYield = db.Column(db.String)
+	timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+	user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+	Instructions = db.relationship('Recipe_Steps2', backref="Recipe", lazy="dynamic")
+#	Ingredients = []	
+	Ingredients = db.relationship('recipe_ingredients2', backref="Recipe", lazy="dynamic")
 
+	def __repr__(self):
+		return '<Recipe {}>'.format(self.recipeName)
+
+
+class recipe_ingredients2(db.Model):
+	__tablename__ = "recipeIngredients2"
+	id = db.Column(db.Integer, primary_key=True)
+	recipe2_id = db.Column(db.Integer, db.ForeignKey('recipe2.id'))
+	ingredient = db.Column(db.String)
+
+class Recipe_Steps2(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	recipe_id = db.Column(db.Integer, db.ForeignKey('recipe2.id'))
+	directions = db.Column(db.String)	
+
+class collections2(db.Model):
+	# __searchable__ = ['collection_name', 'description', 'recipes']
+	id = db.Column(db.Integer, primary_key=True)
+	collection_name = db.Column(db.String(256))
+	description = db.Column(db.String)
+	created_by_2 = db.Column(db.Integer, db.ForeignKey('user.id'))
+	photoURL = db.Column(db.String)

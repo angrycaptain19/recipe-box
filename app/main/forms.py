@@ -60,6 +60,10 @@ class BookForm(FlaskForm):
 	photoURL = StringField('photoURL', validators=[DataRequired()])
 	submit = SubmitField('Create Book')
 
+class RecipeSubmissionForm(FlaskForm):
+	recipeurl = StringField('Recipe URL', validators=[DataRequired()])
+	submit = SubmitField('Save Recipe')
+
 class SearchForm(FlaskForm):
     q = StringField('Search', validators=[DataRequired()])
 

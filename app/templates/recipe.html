@@ -27,6 +27,7 @@
 						<a class="dropdown-item" href="{{ url_for('main.create_collection')
 						 }}"> + New Collection </a>
 					 </div>
+				 	 <a href="{{ url_for('main.follow_recipe',user=current_user.id,recipe_id=recipe.id) }}"><button  type="button" class="btn btn-primary" id="follow-btn">Favorite</button></a>
 				 {% endif %}
 
 			</div>

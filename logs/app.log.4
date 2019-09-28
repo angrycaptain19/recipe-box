@@ -1,116 +1,119 @@
-2019-09-18 18:47:11,664 ERROR: Exception on /favicon.ico [GET] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1925, in dispatch_request
-    self.raise_routing_exception(req)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1907, in raise_routing_exception
-    raise request.routing_exception
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/ctx.py", line 350, in match_request
-    result = self.url_adapter.match(return_rule=True)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 1799, in match
-    raise NotFound()
-werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
-
-During handling of the above exception, another exception occurred:
-
+2019-09-28 18:56:20,776 ERROR: Exception on /index [GET] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1815, in handle_user_exception
-    return self.handle_http_exception(e)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1743, in handle_http_exception
-    return handler(e)
-  File "/Users/timgilboy/recipes_v3/recipe-box/app/errors/handlers.py", line 7, in not_found_error
-    return render_template('errors/404.html'), 404
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/templating.py", line 136, in render_template
-    ctx.app.update_template_context(context)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 838, in update_template_context
-    context.update(func())
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask_login/utils.py", line 368, in _user_context_processor
-    return dict(current_user=_get_user())
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask_login/utils.py", line 335, in _get_user
-    current_app.login_manager._load_user()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask_login/login_manager.py", line 359, in _load_user
-    return self.reload_user()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask_login/login_manager.py", line 321, in reload_user
-    user = self.user_callback(user_id)
-  File "/Users/timgilboy/recipes_v3/recipe-box/app/models.py", line 73, in load_user
-    return User.query.get(int(id))
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py", line 517, in __get__
-    mapper = orm.class_mapper(type)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/base.py", line 441, in class_mapper
-    mapper = _inspect_mapped_class(class_, configure=configure)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/base.py", line 420, in _inspect_mapped_class
-    mapper._configure_all()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/mapper.py", line 1337, in _configure_all
-    configure_mappers()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/mapper.py", line 3229, in configure_mappers
-    mapper._post_configure_properties()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/mapper.py", line 1947, in _post_configure_properties
-    prop.init()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/interfaces.py", line 196, in init
-    self.do_init()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 1860, in do_init
-    self._process_dependent_arguments()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 1922, in _process_dependent_arguments
-    self.target = self.entity.persist_selectable
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 855, in __get__
-    obj.__dict__[self.__name__] = result = self.fget(obj)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 1845, in entity
-    % (self.key, type(argument))
-sqlalchemy.exc.ArgumentError: relationship 'Ingredients' expects a class or a mapper argument (received: <class 'sqlalchemy.sql.schema.Table'>)
-2019-09-18 18:47:59,888 ERROR: Exception on /favicon.ico [GET] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
     rv = self.dispatch_request()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1925, in dispatch_request
-    self.raise_routing_exception(req)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1907, in raise_routing_exception
-    raise request.routing_exception
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/ctx.py", line 350, in match_request
-    result = self.url_adapter.match(return_rule=True)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 1799, in match
-    raise NotFound()
-werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
-
-During handling of the above exception, another exception occurred:
-
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/timgilboy/recipes_v3/recipe-box/app/main/routes.py", line 24, in index
+    return render_template('home.html', Recipes = recipeList, Books=bookList, Collections=collectionList)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/timgilboy/recipes_v3/recipe-box/app/templates/home.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/timgilboy/recipes_v3/recipe-box/app/templates/base.html", line 90, in top-level template code
+    {% block content %}
+  File "/Users/timgilboy/recipes_v3/recipe-box/app/templates/base.html", line 100, in block "content"
+    {% block app_content %}{% endblock %}
+  File "/Users/timgilboy/recipes_v3/recipe-box/app/templates/home.html", line 58, in block "app_content"
+    <a href="{{ url_for('main.discover') }}">See all Recipes -></a>
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 2215, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 2020, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'main.discover'. Did you mean 'main.register' instead?
+2019-09-28 18:58:03,681 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-09-28 18:58:03,683 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-09-28 18:58:03,687 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-09-28 18:58:03,694 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-09-28 18:58:06,690 ERROR: Exception on /index [GET] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1815, in handle_user_exception
-    return self.handle_http_exception(e)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1743, in handle_http_exception
-    return handler(e)
-  File "/Users/timgilboy/recipes_v3/recipe-box/app/errors/handlers.py", line 7, in not_found_error
-    return render_template('errors/404.html'), 404
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/templating.py", line 136, in render_template
-    ctx.app.update_template_context(context)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 838, in update_template_context
-    context.update(func())
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask_login/utils.py", line 368, in _user_context_processor
-    return dict(current_user=_get_user())
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask_login/utils.py", line 335, in _get_user
-    current_app.login_manager._load_user()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask_login/login_manager.py", line 359, in _load_user
-    return self.reload_user()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask_login/login_manager.py", line 321, in reload_user
-    user = self.user_callback(user_id)
-  File "/Users/timgilboy/recipes_v3/recipe-box/app/models.py", line 73, in load_user
-    return User.query.get(int(id))
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py", line 517, in __get__
-    mapper = orm.class_mapper(type)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/base.py", line 441, in class_mapper
-    mapper = _inspect_mapped_class(class_, configure=configure)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/base.py", line 420, in _inspect_mapped_class
-    mapper._configure_all()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/mapper.py", line 1337, in _configure_all
-    configure_mappers()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/mapper.py", line 3225, in configure_mappers
-    raise e
-sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'mapped class Recipe->recipe'. Original exception was: relationship 'Ingredients' expects a class or a mapper argument (received: <class 'sqlalchemy.sql.schema.Table'>)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/timgilboy/recipes_v3/recipe-box/app/main/routes.py", line 24, in index
+    return render_template('home.html', Recipes = recipeList, Books=bookList, Collections=collectionList)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/timgilboy/recipes_v3/recipe-box/app/templates/home.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/timgilboy/recipes_v3/recipe-box/app/templates/base.html", line 63, in top-level template code
+    <a class="nav-link" href="{{ url_for('main.recipes') }}">Recipes</a>
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 2215, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 2020, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'main.recipes'. Did you mean 'main.recipe' instead?
+2019-09-28 18:58:53,935 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-09-28 18:58:53,940 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-09-28 18:58:53,941 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-09-28 18:58:53,943 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-09-28 18:59:44,330 ERROR: Exception on /my_recipes [GET] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/timgilboy/recipes_v3/recipe-box/app/main/routes.py", line 37, in my_recipes
+    return render_template('discover.html', title='My Recipes', Recipes=recipes.items)
+AttributeError: 'BaseQuery' object has no attribute 'items'
+2019-09-28 19:00:01,142 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-09-28 19:00:01,148 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-09-28 19:00:01,162 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-09-28 19:00:01,190 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]

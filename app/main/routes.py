@@ -4,9 +4,10 @@ from werkzeug.urls import url_parse
 from werkzeug.utils import secure_filename
 from config import Config
 from app import db, login
-from app.models import Recipe, User, Ingredients, recipe_ingredients, Recipe_Steps, books, collections, collection_followers, book_followers, recipe_books, recipe_collections 
-from app.main.forms import RecipeForm, LoginForm, RegistrationForm, IngredientForm, collectionForm, BookForm, SearchForm
+from app.models import Recipe, User, Ingredients, recipe_ingredients, Recipe_Steps, books, collections, collection_followers, book_followers, recipe_books, recipe_collections, savedrecipes, Recipe2, recipe_ingredients2
+from app.main.forms import RecipeForm, LoginForm, RegistrationForm, IngredientForm, collectionForm, BookForm, SearchForm, RecipeSubmissionForm
 from app.main import bp
+from scrapertest import recipePull
 import sys
 
 
@@ -17,19 +18,36 @@ import sys
 @bp.route('/')
 @bp.route('/index')
 def index():
-	recipeList = Recipe.query.limit(3).all()
-	bookList = books.query.limit(3).all()
-	collectionList = collections.query.limit(3).all()
-	return render_template('home.html', Recipes = recipeList, Books=bookList, Collections=collectionList)
-
-@bp.route('/discover')
-def discover():
 	page = request.args.get('page', 1, type=int)
-	recipes = Recipe.query.order_by(Recipe.timestamp.desc()).paginate(page, current_app.config['RECIPES_PER_PAGE'],False)
+	recipes = Recipe2.query.order_by(Recipe2.id.desc()).paginate(page, current_app.config['RECIPES_PER_PAGE'],False)
 	next_url = url_for('main.discover', page=recipes.next_num) if recipes.has_next else None
 	prev_url = url_for('main.discover', page=recipes.prev_num) if recipes.has_prev else None
 	return render_template('discover.html', title='Discover', Recipes=recipes.items, next_url=next_url, prev_url=prev_url)
 
+@bp.route('/recipes')
+def discover():
+	page = request.args.get('page', 1, type=int)
+	recipes = Recipe2.query.order_by(Recipe2.id.desc()).paginate(page, current_app.config['RECIPES_PER_PAGE'],False)
+	next_url = url_for('main.discover', page=recipes.next_num) if recipes.has_next else None
+	prev_url = url_for('main.discover', page=recipes.prev_num) if recipes.has_prev else None
+	return render_template('discover.html', title='Discover', Recipes=recipes.items, next_url=next_url, prev_url=prev_url)
+
+@bp.route('/my_recipes')
+@login_required
+def my_recipes():
+	recipes = Recipe2.query.filter_by(user_id=current_user.id)
+	return render_template('my_recipes.html', title='My Recipes', Recipes=recipes)
+
+@bp.route('/recipeSubmission', methods=['GET','POST'])
+@login_required
+def recipeSubmission():
+	form = RecipeSubmissionForm()
+	if form.validate_on_submit():
+		inputurl = form.recipeurl.data
+		recipePull(inputurl)
+		return redirect(url_for('main.index'))	
+	return render_template('recipeSubmission.html', form=form)
+ 
 #_________________________________________________
 # User facing recipe sections		
 
@@ -361,10 +379,16 @@ def search():
 	return render_template('search.html', title=('Search Results'), term=term, recipes=search_recipes, collections = search_collections, books = search_books)
 
 
-# Image Sending Route
-@bp.route('/uploads/<filename>')
-def uploaded_file(filename):
-	return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+#User following recipes
+@bp.route('/follower/<user>/<recipe_id>')
+def follow_recipe(user,recipe_id):
+	recipe = Recipe.query.filter_by(id=recipe_id).first_or_404()
+	user = User.query.filter_by(id=user).first_or_404()
+	saved_recipe = savedrecipes(saved_user_id=user.id, saved_recipe_id = recipe.id)
+	db.session.add(saved_recipe)
+	db.session.commit()
+	return redirect(url_for('main.recipe', id=recipe.id))
+
 
 
 

@@ -11,7 +11,7 @@
 		<div class="row">
 			<div class="col">
 				<h4>
-					Browse Recipes
+					My Recipes
 				</h4>
 			</div>
 			<div class="col col-lg-3 col-sm-10">
@@ -30,11 +30,11 @@
 			<ul class="pagination">
 				<li class="{% if not prev_url %} disabled {% else %} page-item{% endif %}">
 					<a href="{{ prev_url or '#' }}" class="page-link">
-						<span aria-hidden="true">&larr;</span>Newer Posts
+						<span aria-hidden="true">&larr;</span>Newer Recipes
 					</a>
 				<li class="{% if not next_url %} disabled {% else %} page-item{% endif %}">
 					<a href="{{ next_url or '#' }}" class="page-link">
-						Older posts <span aria-hidden="true">&rarr;</span>
+						Older Recipes <span aria-hidden="true">&rarr;</span>
 					</a>
 				</li>
 			</ul>

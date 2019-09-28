@@ -1,4 +1,4 @@
-2019-09-18 18:47:10,020 ERROR: Exception on /favicon.ico [GET] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
+2019-09-28 18:55:27,058 ERROR: Exception on /favicon.ico [GET] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
     rv = self.dispatch_request()
@@ -11,6 +11,19 @@ Traceback (most recent call last):
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 1799, in match
     raise NotFound()
 werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 2346, in _determine_joins
+    consider_as_foreign_keys=consider_as_foreign_keys,
+  File "<string>", line 2, in join_condition
+  File "<string>", line 2, in _join_condition
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/util/deprecations.py", line 128, in warned
+    return fn(*args, **kwargs)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/sql/selectable.py", line 947, in _join_condition
+    % (a.description, b.description, hint)
+sqlalchemy.exc.NoForeignKeysError: Can't find any foreign key relationships between 'collections2' and 'recipeCollections'.
 
 During handling of the above exception, another exception occurred:
 
@@ -37,7 +50,7 @@ Traceback (most recent call last):
     return self.reload_user()
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask_login/login_manager.py", line 321, in reload_user
     user = self.user_callback(user_id)
-  File "/Users/timgilboy/recipes_v3/recipe-box/app/models.py", line 73, in load_user
+  File "/Users/timgilboy/recipes_v3/recipe-box/app/models.py", line 74, in load_user
     return User.query.get(int(id))
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py", line 517, in __get__
     mapper = orm.class_mapper(type)
@@ -53,12 +66,18 @@ Traceback (most recent call last):
     prop.init()
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/interfaces.py", line 196, in init
     self.do_init()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 1860, in do_init
-    self._process_dependent_arguments()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 1922, in _process_dependent_arguments
-    self.target = self.entity.persist_selectable
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 855, in __get__
-    obj.__dict__[self.__name__] = result = self.fget(obj)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 1845, in entity
-    % (self.key, type(argument))
-sqlalchemy.exc.ArgumentError: relationship 'Ingredients' expects a class or a mapper argument (received: <class 'sqlalchemy.sql.schema.Table'>)
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 1861, in do_init
+    self._setup_join_conditions()
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 1941, in _setup_join_conditions
+    can_be_synced_fn=self._columns_are_mapped,
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 2246, in __init__
+    self._determine_joins()
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 2373, in _determine_joins
+    "expressions." % (self.prop, self.secondary)
+sqlalchemy.exc.NoForeignKeysError: Could not determine join condition between parent/child tables on relationship Recipe2.collections2 - there are no foreign keys linking these tables via secondary table 'recipeCollections'.  Ensure that referencing columns are associated with a ForeignKey or ForeignKeyConstraint, or specify 'primaryjoin' and 'secondaryjoin' expressions.
+2019-09-28 18:56:04,337 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-09-28 18:56:08,647 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-09-28 18:56:14,678 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-09-28 18:56:14,794 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-09-28 18:56:14,801 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-09-28 18:56:14,817 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]

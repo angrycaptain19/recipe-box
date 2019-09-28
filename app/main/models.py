@@ -51,7 +51,7 @@ class User(UserMixin, db.Model):
 	email = db.Column(db.String(256), index=True, unique=True)
 	password_hash = db.Column(db.String(128))
 	isAdmin = db.Column(db.Boolean)
-	createdCollections = db.Column(db.Integer)
+	createdCollections = db.relationship('collections', backref="created_by", lazy="dynamic")
 	createdRecipes = db.relationship('Recipe', backref="created by", lazy="dynamic")
 	savedRecipes = db.relationship('Recipe', secondary="user_savedRecipes")
 #	followed_Collections = db.relationship('collections', secondary='collectionFollowers', primaryjoin=('collection_followers.c.follower_id' == id), secondaryjoin=('collection_followers.c.collection_id' == id), backref=db.backref('collectionFollowers', lazy="dynamic"), lazy="dynamic")
@@ -144,7 +144,7 @@ class collections(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	collection_name = db.Column(db.String(256))
 	description = db.Column(db.String)
-	created_by = db.Column(db.Integer, db.ForeignKey('user.id'))
+	created_by_2 = db.Column(db.Integer, db.ForeignKey('user.id'))
 	photoURL = db.Column(db.String)
 	recipes = db.relationship('Recipe', secondary='recipeCollections')
 	followers = db.relationship('User', secondary='collectionFollowers')
@@ -192,9 +192,7 @@ class book_followers(db.Model):
 	book_id = db.Column(db.Integer, db.ForeignKey('books.id'))
 #	book = db.relationship(books, backref=backref("book_followers", cascade="all, delete-orphan"))
 
-
 class user_savedrecipes(db.Model):
-	__tablename__ = "user_savedRecipes"
 	id = db.Column(db.Integer, primary_key=True)
 	saved_user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 	saved_recipe_id = db.Column(db.Integer, db.ForeignKey('recipe.id'))
