@@ -19,21 +19,74 @@ def recipePull(input_url):
 	try:
 		one_script_tag = soup.findAll('script',{'type' : 'application/ld+json'})[0]
 	except: 
-		return(flash('Invalid recipe'))
+		one_script_tag = "invalid"
+		flash('Invalid recipe')
+
+	try: 
+		meta_title = soup.findAll('meta', {'property':'og:title'})[0]
+	except:
+		meta_title = "invalid"
+
+	print(meta_title)
+	try:
+		meta_image = soup.findAll('meta', {'property':'og:image'})[0]
+	except:
+		meta_image = "invalid"
+
+	print(meta_image)
 
 	#print(one_script_tag)
 
-	script_content = one_script_tag.contents[0]
+	if (one_script_tag != "invalid"):	
+		script_content = one_script_tag.contents[0]
+		parsed_script = json.loads(script_content)
+	if (meta_title != "invalid"):
+		meta_title_content = meta_title['content']
+	if (meta_image != "invalid"):
+		meta_image_content = meta_image['content']
 
-	parsed_script = json.loads(script_content)
-
-	try:
-		image_url = parsed_script['image']
-	except:
+# pull in image 
+	if (meta_image != "invalid"):
 		try:
-			image_url = parsed_script['image'][0]
+			image_url= meta_image_content
 		except:
-			image_url = ""
+			try:
+				image_url = parsed_script['image']
+				if type(image_url) != str:
+					image_url = image_url[0]
+			except:
+				try:
+					image_url = parsed_script['image'][0]
+				except:
+					image_url = ""
+	else:					
+		try:
+			image_url = parsed_script['image']
+			if type(image_url) != str:
+				image_url = image_url[0]
+		except:
+			try:
+				image_url = parsed_script['image'][0]
+			except:
+				image_url = ""
+#____________________________________________________
+
+#pull in recipe name 
+	if(meta_title != "invalid"):
+		try:
+			name = meta_title_content
+		except:
+			try:
+				name = parsed_script['name']
+			except:
+				name = ""
+	else:
+		try:
+			name = parsed_script['name']
+		except:
+			name = ""
+
+#___________________________________________________
 
 	try:
 		author = parsed_script['author']['name']
@@ -59,11 +112,6 @@ def recipePull(input_url):
 		ratingValue = parsed_script['aggregateRating']['ratingValue']
 	except:
 		ratingValue = None
-
-	try:
-		name = parsed_script['name']
-	except:
-		name = ""
 
 	try:
 		recipeCategory = parsed_script['recipeCategory']

@@ -1,4 +1,4 @@
-2019-09-28 19:09:49,885 ERROR: Exception on /recipeSubmission [POST] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
+2019-09-28 19:12:05,098 ERROR: Exception on /recipeSubmission [POST] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
     cursor, statement, parameters, context
@@ -25,7 +25,7 @@ Traceback (most recent call last):
     return func(*args, **kwargs)
   File "/Users/timgilboy/recipes_v3/recipe-box/app/main/routes.py", line 47, in recipeSubmission
     recipePull(inputurl)
-  File "/Users/timgilboy/recipes_v3/recipe-box/scrapertest.py", line 106, in recipePull
+  File "/Users/timgilboy/recipes_v3/recipe-box/scrapertest.py", line 112, in recipePull
     db.session.commit()
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/scoping.py", line 162, in do
     return getattr(self.registry(), name)(*args, **kwargs)
@@ -75,7 +75,3 @@ sqlalchemy.exc.InterfaceError: (sqlite3.InterfaceError) Error binding parameter 
 [SQL: INSERT INTO recipe__steps2 (recipe_id, directions) VALUES (?, ?)]
 [parameters: (2, {'@type': 'HowToStep', 'text': 'Toss the chicken breast with garlic powder, salt, and pepper. Heat olive oil in a 10-inch skillet over medium heat. Add chicken breast and cook until browned, stirring often, about 3 minutes. Add garlic to skillet and cook for 30 seconds more.'})]
 (Background on this error at: http://sqlalche.me/e/rvf5)
-2019-09-28 19:11:59,817 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-09-28 19:11:59,817 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-09-28 19:11:59,818 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-09-28 19:11:59,831 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
