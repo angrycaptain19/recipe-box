@@ -1,77 +1,89 @@
-2019-09-28 19:12:05,098 ERROR: Exception on /recipeSubmission [POST] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
-    cursor, statement, parameters, context
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 552, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.InterfaceError: Error binding parameter 1 - probably unsupported type.
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/Users/timgilboy/recipes_v3/recipe-box/app/main/routes.py", line 47, in recipeSubmission
-    recipePull(inputurl)
-  File "/Users/timgilboy/recipes_v3/recipe-box/scrapertest.py", line 112, in recipePull
-    db.session.commit()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/scoping.py", line 162, in do
-    return getattr(self.registry(), name)(*args, **kwargs)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 1027, in commit
-    self.transaction.commit()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 494, in commit
-    self._prepare_impl()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 473, in _prepare_impl
-    self.session.flush()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2459, in flush
-    self._flush(objects)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2597, in _flush
-    transaction.rollback(_capture_exception=True)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 68, in __exit__
-    compat.reraise(exc_type, exc_value, exc_tb)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 153, in reraise
-    raise value
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2557, in _flush
-    flush_context.execute()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 422, in execute
-    rec.execute(self)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 589, in execute
-    uow,
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 245, in save_obj
-    insert,
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 1138, in _emit_insert_statements
-    statement, params
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 988, in execute
-    return meth(self, multiparams, params)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 287, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1107, in _execute_clauseelement
-    distilled_params,
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1248, in _execute_context
-    e, statement, parameters, cursor, context
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1466, in _handle_dbapi_exception
-    util.raise_from_cause(sqlalchemy_exception, exc_info)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 398, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 152, in reraise
-    raise value.with_traceback(tb)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
-    cursor, statement, parameters, context
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 552, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.InterfaceError: (sqlite3.InterfaceError) Error binding parameter 1 - probably unsupported type.
-[SQL: INSERT INTO recipe__steps2 (recipe_id, directions) VALUES (?, ?)]
-[parameters: (2, {'@type': 'HowToStep', 'text': 'Toss the chicken breast with garlic powder, salt, and pepper. Heat olive oil in a 10-inch skillet over medium heat. Add chicken breast and cook until browned, stirring often, about 3 minutes. Add garlic to skillet and cook for 30 seconds more.'})]
-(Background on this error at: http://sqlalche.me/e/rvf5)
+2019-10-07 14:18:47,863 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 14:27:50,001 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 14:27:50,014 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 14:27:50,020 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 14:27:50,048 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 14:32:23,942 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 14:32:23,969 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 14:32:23,972 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 14:32:23,989 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 15:03:41,923 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 15:03:41,934 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 15:03:41,976 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 15:03:42,075 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 15:11:25,328 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 15:11:25,324 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 15:11:25,337 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 15:11:25,345 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 15:17:51,170 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 15:17:51,170 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 15:17:51,184 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 15:17:51,198 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 15:33:34,873 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 15:33:34,878 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 15:33:34,890 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 15:33:34,880 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 16:01:46,043 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 16:01:46,050 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 16:01:46,068 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 16:01:46,108 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 16:35:07,797 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 16:35:07,801 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 16:35:07,806 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 16:35:07,810 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 16:43:04,524 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 16:43:04,528 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 16:43:04,529 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 16:43:04,534 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 16:52:10,464 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 16:52:10,465 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 16:52:10,475 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 16:52:10,477 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 16:55:24,060 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 16:55:24,118 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 16:55:24,123 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 16:55:24,173 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 17:09:07,517 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 17:09:07,524 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 17:09:07,542 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 17:09:07,555 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 17:15:54,266 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 17:15:54,288 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 17:15:54,299 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 17:15:54,306 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 17:42:42,988 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 17:42:42,996 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 17:42:43,001 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 17:42:43,003 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 17:48:21,712 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 17:48:21,738 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 17:48:21,758 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 17:48:21,771 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 18:28:55,472 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 18:28:55,491 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 18:28:55,509 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 18:28:55,527 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 18:53:47,307 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 18:53:47,308 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 18:53:47,365 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 18:53:47,379 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 18:54:59,558 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 18:54:59,563 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 18:54:59,639 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 18:54:59,656 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 19:20:10,289 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 19:20:10,294 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 19:20:10,312 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 19:20:10,312 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 21:53:36,240 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 21:53:36,251 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 21:53:36,252 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 21:53:36,312 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 21:56:49,648 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 21:56:49,653 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 21:56:49,655 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 21:56:49,658 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 21:57:47,513 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 21:57:47,515 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 21:57:47,516 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 21:57:47,532 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]

@@ -20,36 +20,52 @@ def recipePull(input_url):
 		one_script_tag = soup.findAll('script',{'type' : 'application/ld+json'})[0]
 	except: 
 		one_script_tag = "invalid"
-		flash('Invalid recipe')
 
 	try: 
 		meta_title = soup.findAll('meta', {'property':'og:title'})[0]
 	except:
 		meta_title = "invalid"
 
-	print(meta_title)
 	try:
 		meta_image = soup.findAll('meta', {'property':'og:image'})[0]
 	except:
 		meta_image = "invalid"
 
-	print(meta_image)
+	if (one_script_tag != "invalid" or meta_title != "invalid" or meta_image != "invalid"):
 
-	#print(one_script_tag)
 
-	if (one_script_tag != "invalid"):	
-		script_content = one_script_tag.contents[0]
-		parsed_script = json.loads(script_content)
-	if (meta_title != "invalid"):
-		meta_title_content = meta_title['content']
-	if (meta_image != "invalid"):
-		meta_image_content = meta_image['content']
 
-# pull in image 
-	if (meta_image != "invalid"):
-		try:
-			image_url= meta_image_content
-		except:
+		#print(one_script_tag)
+
+		if (one_script_tag != "invalid"):
+			try:	
+				script_content = one_script_tag.contents
+				parsed_script = json.loads(script_content)
+			except:
+				try:
+					script_content = one_script_tag.contents[0]
+					parsed_script = json.loads(script_content)
+				except:
+					if (meta_title != "invalid"):
+						meta_title_content = meta_title['content']
+					if (meta_image != "invalid"):
+						meta_image_content = meta_image['content']
+
+	# pull in image 
+		if (meta_image != "invalid"):
+			try:
+				image_url= meta_image_content
+			except:
+				try:
+					image_url = parsed_script['image']
+					if type(image_url) != str:
+						image_url = image_url[0]
+				except:
+					try:
+						image_url = parsed_script['image'][0]
+					except:
+						image_url = ""
+		else:					
 			try:
 				image_url = parsed_script['image']
 				if type(image_url) != str:
@@ -59,108 +75,102 @@ def recipePull(input_url):
 					image_url = parsed_script['image'][0]
 				except:
 					image_url = ""
-	else:					
-		try:
-			image_url = parsed_script['image']
-			if type(image_url) != str:
-				image_url = image_url[0]
-		except:
-			try:
-				image_url = parsed_script['image'][0]
-			except:
-				image_url = ""
-#____________________________________________________
+	#____________________________________________________
 
-#pull in recipe name 
-	if(meta_title != "invalid"):
-		try:
-			name = meta_title_content
-		except:
+	#pull in recipe name 
+		if(meta_title != "invalid"):
+			try:
+				name = meta_title_content
+			except:
+				try:
+					name = parsed_script['name']
+				except:
+					name = ""
+		else:
 			try:
 				name = parsed_script['name']
 			except:
 				name = ""
-	else:
+
+	#___________________________________________________
+
 		try:
-			name = parsed_script['name']
+			author = parsed_script['author']['name']
 		except:
-			name = ""
+			author = ""
 
-#___________________________________________________
+		try: 
+			description = parsed_script['description']
+		except:
+			description = ""
 
-	try:
-		author = parsed_script['author']['name']
-	except:
-		author = ""
+		try:
+			keywords = parsed_script['keywords']
+		except:
+			keywords = ""
 
-	try: 
-		description = parsed_script['description']
-	except:
-		description = ""
+		try:
+			ratingCount = parsed_script['aggregateRating']['ratingCount']
+		except:
+			ratingCount = None
 
-	try:
-		keywords = parsed_script['keywords']
-	except:
-		keywords = ""
+		try:
+			ratingValue = parsed_script['aggregateRating']['ratingValue']
+		except:
+			ratingValue = None
 
-	try:
-		ratingCount = parsed_script['aggregateRating']['ratingCount']
-	except:
-		ratingCount = None
+		try:
+			recipeCategory = parsed_script['recipeCategory']
+		except:
+			recipeCategory = ""
 
-	try:
-		ratingValue = parsed_script['aggregateRating']['ratingValue']
-	except:
-		ratingValue = None
+		try:
+			recipeCuisine = parsed_script['recipeCuisine']
+		except:
+			recipeCuisine = ""
 
-	try:
-		recipeCategory = parsed_script['recipeCategory']
-	except:
-		recipeCategory = ""
+		try:
+			recipeIngredients = parsed_script['recipeIngredient']
+		except:
+			recipeIngredients = ""
 
-	try:
-		recipeCuisine = parsed_script['recipeCuisine']
-	except:
-		recipeCuisine = ""
-
-	try:
-		recipeIngredients = parsed_script['recipeIngredient']
-	except:
-		recipeIngredients = ""
-
-	try:
-		recipeInstructions = parsed_script['recipeInstructions']
-	except:
-		recipeInstructions = ""
+		try:
+			recipeInstructions = parsed_script['recipeInstructions']
+		except:
+			recipeInstructions = ""
 
 
-	try:
-		recipeYield = parsed_script['recipeYield']
-	except:
-		recipeYield = ""
+		try:
+			recipeYield = parsed_script['recipeYield']
+		except:
+			recipeYield = ""
 
 
-	#"author":{"@type":"Person","name":"Justine Pattison"}
+		#"author":{"@type":"Person","name":"Justine Pattison"}
 
-	recipe = Recipe2(recipeURL=url, recipeName=name, ratingCount=ratingCount, ratingValue=ratingValue, image_url=image_url, description=description, author=author, keywords=keywords, recipeCategory=recipeCategory, recipeCuisine=recipeCuisine,recipeYield=recipeYield, user_id=current_user.id)
-	db.session.add(recipe)
+		recipe = Recipe2(recipeURL=url, recipeName=name, ratingCount=ratingCount, ratingValue=ratingValue, image_url=image_url, description=description, author=author, keywords=keywords, recipeCategory=recipeCategory, recipeCuisine=recipeCuisine,recipeYield=recipeYield, user_id=current_user.id)
+		db.session.add(recipe)
 
-	recipeRecord = Recipe2.query.filter_by(recipeURL=url).first()
-	recipeRecordID = recipeRecord.id
-	i = 0
-	for ingredient in recipeIngredients:
-		if type(ingredient) == str:
-			recipeIngredient = recipe_ingredients2(recipe2_id=recipeRecordID, ingredient=ingredient)
-			db.session.add(recipeIngredient)
-		else:
-			print("invalid ingredient")
-	for recipeInstruction in recipeInstructions:
-		if type(recipeInstruction) == str:
-			instruction = Recipe_Steps2(recipe_id=recipeRecordID, directions=recipeInstruction)
-			db.session.add(instruction)
-		else:
-			print("invalid step")
-	db.session.commit()  
+		recipeRecord = Recipe2.query.filter_by(recipeURL=url).first()
+		recipeRecordID = recipeRecord.id
+		i = 0
+		for ingredient in recipeIngredients:
+			if type(ingredient) == str:
+				recipeIngredient = recipe_ingredients2(recipe2_id=recipeRecordID, ingredient=ingredient)
+				db.session.add(recipeIngredient)
+			else:
+				print("invalid ingredient")
+		for recipeInstruction in recipeInstructions:
+			if type(recipeInstruction) == str:
+				instruction = Recipe_Steps2(recipe_id=recipeRecordID, directions=recipeInstruction)
+				db.session.add(instruction)
+			else:
+				print("invalid step")
+		db.session.commit() 
+
+	else:
+		flash("Sorry, we cannot handle that recipe") 
+		print("Unable to handle recipe")
 
 
 	# print("image url " + image_url)

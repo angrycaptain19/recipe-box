@@ -1,4 +1,10 @@
-2019-09-28 18:56:20,776 ERROR: Exception on /index [GET] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
+2019-10-01 12:46:05,102 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-01 12:46:05,115 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-01 12:47:02,885 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-01 12:47:02,901 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-01 12:47:02,927 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-01 12:47:02,956 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-01 12:47:08,931 ERROR: Exception on /recipeSubmission [POST] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,108 +18,80 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/timgilboy/recipes_v3/recipe-box/app/main/routes.py", line 24, in index
-    return render_template('home.html', Recipes = recipeList, Books=bookList, Collections=collectionList)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/templating.py", line 140, in render_template
-    ctx.app,
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/templating.py", line 120, in _render
-    rv = template.render(context)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/Users/timgilboy/recipes_v3/recipe-box/app/templates/home.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/timgilboy/recipes_v3/recipe-box/app/templates/base.html", line 90, in top-level template code
-    {% block content %}
-  File "/Users/timgilboy/recipes_v3/recipe-box/app/templates/base.html", line 100, in block "content"
-    {% block app_content %}{% endblock %}
-  File "/Users/timgilboy/recipes_v3/recipe-box/app/templates/home.html", line 58, in block "app_content"
-    <a href="{{ url_for('main.discover') }}">See all Recipes -></a>
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/helpers.py", line 370, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 2215, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/helpers.py", line 358, in url_for
-    endpoint, values, method=method, force_external=external
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 2020, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'main.discover'. Did you mean 'main.register' instead?
-2019-09-28 18:58:03,681 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-09-28 18:58:03,683 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-09-28 18:58:03,687 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-09-28 18:58:03,694 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-09-28 18:58:06,690 ERROR: Exception on /index [GET] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/timgilboy/recipes_v3/recipe-box/app/main/routes.py", line 24, in index
-    return render_template('home.html', Recipes = recipeList, Books=bookList, Collections=collectionList)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/templating.py", line 140, in render_template
-    ctx.app,
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/templating.py", line 120, in _render
-    rv = template.render(context)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/Users/timgilboy/recipes_v3/recipe-box/app/templates/home.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/timgilboy/recipes_v3/recipe-box/app/templates/base.html", line 63, in top-level template code
-    <a class="nav-link" href="{{ url_for('main.recipes') }}">Recipes</a>
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/helpers.py", line 370, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 2215, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/helpers.py", line 358, in url_for
-    endpoint, values, method=method, force_external=external
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 2020, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'main.recipes'. Did you mean 'main.recipe' instead?
-2019-09-28 18:58:53,935 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-09-28 18:58:53,940 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-09-28 18:58:53,941 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-09-28 18:58:53,943 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-09-28 18:59:44,330 ERROR: Exception on /my_recipes [GET] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/timgilboy/recipes_v3/recipe-box/app/main/routes.py", line 37, in my_recipes
-    return render_template('discover.html', title='My Recipes', Recipes=recipes.items)
-AttributeError: 'BaseQuery' object has no attribute 'items'
-2019-09-28 19:00:01,142 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-09-28 19:00:01,148 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-09-28 19:00:01,162 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-09-28 19:00:01,190 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/timgilboy/recipes_v3/recipe-box/app/main/routes.py", line 47, in recipeSubmission
+    recipePull(inputurl)
+  File "/Users/timgilboy/recipes_v3/recipe-box/scrapertest.py", line 43, in recipePull
+    if (script_tag != "invalid"):
+NameError: name 'script_tag' is not defined
+2019-10-01 12:47:35,569 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-01 12:47:35,570 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-01 12:47:35,640 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-01 12:47:35,720 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-01 13:40:44,696 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-01 13:40:44,702 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-01 13:40:44,742 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-01 13:40:44,748 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-01 13:52:58,141 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-01 13:52:58,142 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-01 13:52:58,143 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-01 13:52:58,145 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 15:43:33,317 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 15:43:33,317 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 15:43:33,317 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 15:43:33,317 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 15:48:40,151 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 15:48:40,159 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 15:48:40,165 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 15:48:40,222 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 17:47:51,577 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 17:47:51,582 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 17:47:51,584 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 17:47:51,657 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 18:49:05,139 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 18:49:05,138 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 18:49:05,144 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 18:49:05,154 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 18:55:03,943 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 18:55:03,947 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 18:55:03,952 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 18:55:03,956 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 18:59:44,227 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 18:59:44,274 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 18:59:44,340 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 18:59:44,376 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 19:20:45,436 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 19:20:45,438 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 19:20:45,441 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 19:20:45,449 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 19:36:34,376 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 19:36:34,408 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 19:36:34,410 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 19:36:34,460 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 19:48:50,249 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 19:48:50,258 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 19:48:50,265 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 19:48:50,284 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 19:59:02,179 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 19:59:02,179 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 19:59:02,180 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 19:59:02,182 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 20:09:16,294 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 20:09:16,305 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 20:09:16,330 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 20:09:16,347 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 20:19:29,653 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 20:19:29,649 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 20:19:29,660 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 20:19:30,248 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 20:29:42,385 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 20:29:42,392 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 20:29:42,394 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 20:29:42,394 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 20:39:56,341 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 20:39:56,343 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 20:39:56,363 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 20:39:56,368 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 20:50:05,879 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-04 21:00:20,919 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]

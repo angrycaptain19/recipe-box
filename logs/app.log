@@ -1,10 +1,26 @@
-2019-10-01 12:46:05,102 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-01 12:46:05,115 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-01 12:47:02,885 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-01 12:47:02,901 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-01 12:47:02,927 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-01 12:47:02,956 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-01 12:47:08,931 ERROR: Exception on /recipeSubmission [POST] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
+2019-10-07 22:15:41,008 ERROR: Exception on /recipeSubmission [POST] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/timgilboy/recipes_v3/recipe-box/scrapertest.py", line 43, in recipePull
+    parsed_script = json.loads(script_content)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/json/__init__.py", line 348, in loads
+    'not {!r}'.format(s.__class__.__name__))
+TypeError: the JSON object must be str, bytes or bytearray, not 'list'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/timgilboy/recipes_v3/recipe-box/scrapertest.py", line 47, in recipePull
+    parsed_script = json.loads(script_content)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/json/__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/json/decoder.py", line 355, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Invalid control character at: line 21 column 293 (char 1328)
+
+During handling of the above exception, another exception occurred:
+
 Traceback (most recent call last):
   File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -22,18 +38,14 @@ Traceback (most recent call last):
     return func(*args, **kwargs)
   File "/Users/timgilboy/recipes_v3/recipe-box/app/main/routes.py", line 47, in recipeSubmission
     recipePull(inputurl)
-  File "/Users/timgilboy/recipes_v3/recipe-box/scrapertest.py", line 43, in recipePull
-    if (script_tag != "invalid"):
-NameError: name 'script_tag' is not defined
-2019-10-01 12:47:35,569 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-01 12:47:35,570 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-01 12:47:35,640 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-01 12:47:35,720 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-01 13:40:44,696 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-01 13:40:44,702 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-01 13:40:44,742 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-01 13:40:44,748 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-01 13:52:58,141 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-01 13:52:58,142 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-01 13:52:58,143 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-01 13:52:58,145 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+  File "/Users/timgilboy/recipes_v3/recipe-box/scrapertest.py", line 49, in recipePull
+    one_script_tag = one_script_tag.replace('\n','')
+TypeError: 'NoneType' object is not callable
+2019-10-07 22:17:51,613 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 22:17:51,613 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 22:17:51,618 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 22:17:51,662 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 22:19:57,926 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 22:19:57,928 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 22:19:58,013 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+2019-10-07 22:19:58,032 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
