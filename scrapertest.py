@@ -20,16 +20,21 @@ def recipePull(input_url):
 		one_script_tag = soup.findAll('script',{'type' : 'application/ld+json'})[0]
 	except: 
 		one_script_tag = "invalid"
+		print ("script tags invalid")
 
 	try: 
 		meta_title = soup.findAll('meta', {'property':'og:title'})[0]
 	except:
 		meta_title = "invalid"
+		print ("meta title invalid")
 
 	try:
 		meta_image = soup.findAll('meta', {'property':'og:image'})[0]
 	except:
 		meta_image = "invalid"
+		print("meta image invalid")
+
+
 
 	if (one_script_tag != "invalid" or meta_title != "invalid" or meta_image != "invalid"):
 
@@ -50,6 +55,10 @@ def recipePull(input_url):
 						meta_title_content = meta_title['content']
 					if (meta_image != "invalid"):
 						meta_image_content = meta_image['content']
+		if (meta_title != "invalid"):
+			meta_title_content = meta_title['content']
+		if (meta_image != "invalid"):
+			meta_image_content = meta_image['content']
 
 	# pull in image 
 		if (meta_image != "invalid"):
