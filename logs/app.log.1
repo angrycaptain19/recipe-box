@@ -1,132 +1,108 @@
-2019-10-07 21:58:34,172 ERROR: Exception on /recipeSubmission [POST] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
+2019-12-18 10:55:17,415 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 10:55:17,439 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 10:55:17,464 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 10:56:55,086 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 10:56:55,086 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 10:56:55,086 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 10:56:55,095 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 10:57:34,664 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 10:57:34,664 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 10:59:13,334 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 10:59:13,334 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 10:59:13,334 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 10:59:13,334 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 10:59:25,011 ERROR: Exception on /recipeSubmission [POST] [in /Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py:1890]
 Traceback (most recent call last):
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/Users/timgilboy/recipes_v3/recipe-box/app/main/routes.py", line 47, in recipeSubmission
-    recipePull(inputurl)
-  File "/Users/timgilboy/recipes_v3/recipe-box/scrapertest.py", line 35, in recipePull
-    print("meta tite is " + meta_title)
-TypeError: must be str, not Tag
-2019-10-07 21:59:00,210 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 21:59:00,211 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 21:59:00,219 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 21:59:00,232 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 21:59:02,668 ERROR: Exception on /recipeSubmission [POST] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/Users/timgilboy/recipes_v3/recipe-box/app/main/routes.py", line 47, in recipeSubmission
-    recipePull(inputurl)
-  File "/Users/timgilboy/recipes_v3/recipe-box/scrapertest.py", line 42, in recipePull
-    parsed_script = json.loads(script_content)
-  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/json/__init__.py", line 354, in loads
-    return _default_decoder.decode(s)
-  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/json/decoder.py", line 339, in decode
-    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
-  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/json/decoder.py", line 355, in raw_decode
-    obj, end = self.scan_once(s, idx)
-json.decoder.JSONDecodeError: Invalid control character at: line 21 column 293 (char 1328)
-2019-10-07 22:02:08,145 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 22:02:08,153 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 22:02:08,153 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 22:02:08,163 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 22:02:23,461 ERROR: Exception on /recipeSubmission [POST] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
-  File "/Users/timgilboy/recipes_v3/recipe-box/scrapertest.py", line 43, in recipePull
-    parsed_script = json.loads(script_content)
-  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/json/__init__.py", line 348, in loads
-    'not {!r}'.format(s.__class__.__name__))
-TypeError: the JSON object must be str, bytes or bytearray, not 'list'
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/sqlalchemy/orm/base.py", line 399, in _entity_descriptor
+    return getattr(entity, key)
+AttributeError: type object 'Recipe2' has no attribute 'recipe_id'
 
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
     raise value
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
     rv = self.dispatch_request()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/Users/timgilboy/recipes_v3/recipe-box/app/main/routes.py", line 47, in recipeSubmission
+  File "/users/timgilboy/Downloads/recipebox/recipe-box/app/main/routes.py", line 47, in recipeSubmission
     recipePull(inputurl)
-  File "/Users/timgilboy/recipes_v3/recipe-box/scrapertest.py", line 45, in recipePull
-    script_content = one_script_tag.centents[0]
-TypeError: 'NoneType' object is not subscriptable
-2019-10-07 22:02:54,473 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 22:14:44,342 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 22:14:44,342 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 22:14:44,343 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 22:14:44,413 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 22:14:49,491 ERROR: Exception on /recipeSubmission [POST] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
+  File "/users/timgilboy/Downloads/recipebox/recipe-box/scrapertest.py", line 179, in recipePull
+    print(Recipe2.query.filter_by(recipe_id=recipeRecord.id).all())
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 1798, in filter_by
+    clauses = [
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 1799, in <listcomp>
+    _entity_descriptor(self._joinpoint_zero(), key) == value
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/sqlalchemy/orm/base.py", line 401, in _entity_descriptor
+    raise sa_exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: Entity '<class 'app.models.Recipe2'>' has no property 'recipe_id'
+2019-12-18 10:59:53,575 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 10:59:53,575 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 10:59:53,575 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 10:59:53,575 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 11:01:24,774 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 11:01:24,775 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 11:01:24,776 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 11:01:24,777 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 11:01:25,974 ERROR: Exception on /recipes [GET] [in /Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py:1890]
 Traceback (most recent call last):
-  File "/Users/timgilboy/recipes_v3/recipe-box/scrapertest.py", line 43, in recipePull
-    parsed_script = json.loads(script_content)
-  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/json/__init__.py", line 348, in loads
-    'not {!r}'.format(s.__class__.__name__))
-TypeError: the JSON object must be str, bytes or bytearray, not 'list'
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/Users/timgilboy/recipes_v3/recipe-box/scrapertest.py", line 46, in recipePull
-    script_content = one_script_tag.centents[0]
-TypeError: 'NoneType' object is not subscriptable
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
     raise value
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
     rv = self.dispatch_request()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/Users/timgilboy/recipes_v3/recipe-box/app/main/routes.py", line 47, in recipeSubmission
-    recipePull(inputurl)
-  File "/Users/timgilboy/recipes_v3/recipe-box/scrapertest.py", line 49, in recipePull
-    one_script_tag = one_script_tag.replace('\n','')
-TypeError: 'NoneType' object is not callable
-2019-10-07 22:15:36,265 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 22:15:36,267 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 22:15:36,269 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 22:15:36,277 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
+  File "/users/timgilboy/Downloads/recipebox/recipe-box/app/main/routes.py", line 33, in discover
+    print(recipes.items.recipeName)
+AttributeError: 'list' object has no attribute 'recipeName'
+2019-12-18 11:02:01,631 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 11:02:01,632 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 11:02:01,632 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 11:02:01,633 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 11:03:59,018 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 11:03:59,018 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 11:03:59,018 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 11:03:59,073 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 11:04:09,655 ERROR: Exception on /recipes [GET] [in /Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py:1890]
+Traceback (most recent call last):
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/users/timgilboy/Downloads/recipebox/recipe-box/app/main/routes.py", line 35, in discover
+    print(Recipe2.query.filter(Recipe2.RecipeName.contains('anise')))
+AttributeError: type object 'Recipe2' has no attribute 'RecipeName'
+2019-12-18 11:04:27,667 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 11:04:27,687 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 11:04:27,704 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 11:04:27,780 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 11:05:13,303 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 11:05:13,349 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 11:05:13,349 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 11:05:13,387 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 11:05:51,761 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 11:05:51,761 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2019-12-18 11:05:51,785 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
