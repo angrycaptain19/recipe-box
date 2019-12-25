@@ -212,7 +212,10 @@ def login():
 		return redirect(url_for('main.index'))
 	form = LoginForm()
 	if form.validate_on_submit():
+		print(form.username.data)
 		user = User.query.filter_by(username=form.username.data).first()
+		print(user)
+		print(user.password_hash)
 		password_check = check_password_hash(user.password_hash, form.password.data)
 		if user is None or not password_check:
 			flash('Invalid username or password')
