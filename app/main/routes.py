@@ -2,6 +2,7 @@ from flask import render_template, Flask, redirect, url_for, flash, request, cur
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 from werkzeug.utils import secure_filename
+from werkzeug.security import generate_password_hash, check_password_hash
 from config import Config
 from app import db, login
 from app.models import Recipe, User, Ingredients, recipe_ingredients, Recipe_Steps, books, collections, collection_followers, book_followers, recipe_books, recipe_collections, savedrecipes, Recipe2, recipe_ingredients2
@@ -212,7 +213,8 @@ def login():
 	form = LoginForm()
 	if form.validate_on_submit():
 		user = User.query.filter_by(username=form.username.data).first()
-		if user is None or not user.check_password(form.password.data):
+		password_check = check_password_hash(user.password_hash, form.password.data)
+		if user is None or not password_check:
 			flash('Invalid username or password')
 			return redirect(url_for('main.login'))
 		login_user(user, remember=form.remember_me.data)
@@ -236,8 +238,9 @@ def register():
 		return redirect(url_for('main.index'))
 	form = RegistrationForm()
 	if form.validate_on_submit():
-		user = User(username=form.username.data, email=form.email.data)
-		user.set_password(form.password.data)
+		password_hash = generate_password_hash(form.password.data)
+		user = User(username=form.username.data, email=form.email.data, password_hash=password_hash)
+		#user.set_password(form.password.data)
 		db.session.add(user)
 		db.session.commit()
 		return redirect(url_for('main.login'))
