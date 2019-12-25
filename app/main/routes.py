@@ -213,7 +213,7 @@ def login():
 	form = LoginForm()
 	if form.validate_on_submit():
 		print(form.username.data)
-		user = User.query.filter_by(User.username=form.username.data).first()
+		user = User.query.filter_by(username=form.username.data).first_or_404()
 		print(user)
 		print(user.password_hash)
 		password_check = check_password_hash(user.password_hash, form.password.data)
