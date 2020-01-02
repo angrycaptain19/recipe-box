@@ -1,8 +1,7 @@
 from flask_wtf import FlaskForm
-from flask import request
 from wtforms import StringField, SubmitField, FloatField, PasswordField, BooleanField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
-from app.models import Recipe, User, Ingredients
+from app.models import Recipe2, User, Ingredients
 
 class RecipeForm(FlaskForm):
 	recipeName = StringField('Recipe Name', validators=[DataRequired()])
@@ -40,25 +39,12 @@ class RegistrationForm(FlaskForm):
 		if user is not None:
 			raise ValidationError('Please use a different email address')
 
-class collectionForm(FlaskForm):
-	collectionName = StringField('Collection Name', validators=[DataRequired()])
-	collectionDescription = StringField('Description', validators=[DataRequired()])
-	photoURL = StringField('Photo URL', validators=[DataRequired()])
-	submit = SubmitField('Create Collection')
-
 class IngredientForm(FlaskForm):
 	ingredientName = StringField('Ingredient Name', validators=[DataRequired()])
 	ingredientType = StringField('Ingredient Type', validators=[DataRequired()])
 	measurementUnit = StringField('Standard Mesurement Unit', validators=[DataRequired()])
 	standardUnitAmount = StringField('Standard Measurement Amount', validators=[DataRequired()])
 	submit = SubmitField('Create Ingredient')
-
-
-class BookForm(FlaskForm):
-	book_name = StringField('Book Name', validators=[DataRequired()])
-	author = StringField('Author', validators=[DataRequired()])
-	photoURL = StringField('photoURL', validators=[DataRequired()])
-	submit = SubmitField('Create Book')
 
 class RecipeSubmissionForm(FlaskForm):
 	recipeurl = StringField('Recipe URL', validators=[DataRequired()])
@@ -73,3 +59,4 @@ class SearchForm(FlaskForm):
         if 'csrf_enabled' not in kwargs:
             kwargs['csrf_enabled'] = False
         super(SearchForm, self).__init__(*args, **kwargs)
+

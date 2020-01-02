@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, FloatField, PasswordField, BooleanField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
-from app.models import Recipe, User, Ingredients
+from app.models import Recipe2, User, Ingredients
 
 class RecipeForm(FlaskForm):
 	recipeName = StringField('Recipe Name', validators=[DataRequired()])
@@ -38,12 +38,6 @@ class RegistrationForm(FlaskForm):
 		user = User.query.filter_by(email=email.data).first()
 		if user is not None:
 			raise ValidationError('Please use a different email address')
-
-class collectionForm(FlaskForm):
-	collectionName = StringField('Collection Name', validators=[DataRequired()])
-	collectionDescription = StringField('Description', validators=[DataRequired()])
-	photoURL = StringField('Photo URL', validators=[DataRequired()])
-	submit = SubmitField('Create Collection')
 
 class IngredientForm(FlaskForm):
 	ingredientName = StringField('Ingredient Name', validators=[DataRequired()])

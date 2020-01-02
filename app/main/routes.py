@@ -5,8 +5,8 @@ from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash
 from config import Config
 from app import db, login
-from app.models import Recipe, User, Ingredients, recipe_ingredients, Recipe_Steps, books, collections, collection_followers, book_followers, recipe_books, recipe_collections, savedrecipes, Recipe2, recipe_ingredients2
-from app.main.forms import RecipeForm, LoginForm, RegistrationForm, IngredientForm, collectionForm, BookForm, SearchForm, RecipeSubmissionForm
+from app.models import User, Ingredients, Recipe2
+from app.main.forms import RecipeForm, LoginForm, RegistrationForm, IngredientForm, RecipeSubmissionForm, SearchForm
 from app.main import bp
 from scrapertest import recipePull
 import sys
@@ -51,154 +51,12 @@ def recipeSubmission():
  
 #_________________________________________________
 # User facing recipe sections		
-
-@bp.route('/recipe/<id>')
-def recipe(id):
-	recipe = Recipe.query.filter_by(id=id).first_or_404()
-	user_collections = []
-	if current_user.is_anonymous != True:
-		user = User.query.filter_by(id=current_user.id).all()
-		user_collections = collections.query.filter_by(created_by_2=current_user.id)
-	return render_template('recipe.html', recipe=recipe, user_collections=user_collections)
 	
 
 @bp.route('/create_recipe', methods=['GET','POST'])
 @login_required
 def create_recipe():
 	return render_template('create_recipe.html', title='Create a Recipe')
-
-@bp.route('/submit_recipe', methods=['GET','POST'])
-def user_submit_recipe():
-	if request.method == 'POST':
-		#pull in all individual form responses. First create the Recipe record w/ no ingredients or steps
-		recipeName = request.form['recipeName']
-		mealType = request.form['mealType']
-		Image = request.form['Image']
-		prepTime = request.form['prepTime']
-		cookTime = request.form['cookTime']
-		recipeCheck = Recipe.query.filter_by(recipeName=recipeName).first()
-		if recipeCheck is not None:
-			flash('A recipe with this name already exists. Please choose a new name for your recipe')
-			return redirect(url_for('main.admin_create_recipe'))
-		# file = request.files['file']
-		# if file and allowed_file(file.filename):
-		# 	filename = secure_filename(file.filename)
-		# 	file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-		recipe = Recipe(recipeName=recipeName, mealType=mealType, Image=Image, prepTime=prepTime, cookTime=cookTime)
-		db.session.add(recipe)
-#		Pull in ingredient information, then query for the recipe we just created to get ID and create the recipeIngredients record for these ingredients
-		ingredientNames = request.form.getlist('ingredientName')
-		ingredientMeasurements = request.form.getlist('ingredientMeasurement')
-		ingredientAmounts = request.form.getlist('ingredientAmount')
-		recipeRecord = Recipe.query.filter_by(recipeName=recipeName).first()
-		recipeRecordID = recipeRecord.id
-#		Iterate over all the ingredients in the recipe Form
-		i = 0
-		for ingredientName in ingredientNames:
-#		Check if this ingredient already exists in the ingredient table and if not create an ingredient record for that ingredient
-			ingredient = Ingredients.query.filter_by(ingredientName=ingredientName).first()	
-			if ingredient is None:
-				newIngredient = Ingredients(ingredientName=ingredientName)
-				db.session.add(newIngredient)
-				ingredient = Ingredients.query.filter_by(ingredientName=ingredientName).first()
-			recipeIngredient = recipe_ingredients(recipe_id=recipeRecordID, ingredient_id=ingredient.id, ingredientName=ingredientName, ingredientAmount=ingredientAmounts[i], ingredientUnit=ingredientMeasurements[i])
-			db.session.add(recipeIngredient)
-			i = i + 1
-		recipeSteps = request.form.getlist('recipeStep')
-		j=0
-		for recipeStep in recipeSteps:
-			j=j+1
-			step = Recipe_Steps(recipe_id=recipeRecordID, stepNumber=j, directions=recipeStep)
-			db.session.add(step)
-		db.session.commit()
-		return  redirect(url_for('main.index'))
-
-#__________________________________________________
-# User facing collections section
-
-@bp.route('/collections')
-def collection_list():
-	page = request.args.get('page', 1, type=int)
-	collection_list = collections.query.paginate(page, current_app.config['COLLECTIONS_PER_PAGE'],False)
-	next_url = url_for('main.collection_list', page=collection_list.next_num) if collection_list.has_next else None
-	prev_url = url_for('main.collection_list', page=collection_list.prev_num) if collection_list.has_prev else None
-	return render_template('collection_list.html', collections = collection_list.items, next_url = next_url, prev_url = prev_url)
-
-
-@bp.route('/collection/<id>')
-def collection(id):
-	collection = collections.query.filter_by(id=id).first_or_404()
-	collection_id = collection.id
-	Recipe_collections = recipe_collections.query.filter_by(collection_id=collection_id)
-#	recipe_ids = Recipe_collections.recipe_id
-#	recipes = recipe.query.filter_by(id=recipe_ids)
-	return render_template('collection.html', collection=collection)#, recipes = recipes)
-
-@bp.route('/create-collection', methods=['GET','POST'])
-@login_required
-def create_collection():
-	form = collectionForm()
-	if form.validate_on_submit():
-		collection = collections(collection_name=form.collectionName.data, description=form.collectionDescription.data, photoURL=form.photoURL.data, created_by_2=current_user.id)
-		user = User.query.filter_by(id=current_user.id).first()
-		db.session.add(collection)
-		db.session.commit()
-		return redirect(url_for('main.collection_list'))
-	return render_template('create_collection.html', form=form)
-
-@bp.route('/add-to-collection/<current_collection>/<current_recipe>')
-@login_required
-def add_to_collection(current_collection, current_recipe):
-	collection = collections.query.filter_by(id=current_collection).first_or_404()
-	recipe = Recipe.query.filter_by(id=current_recipe).first()
-	collection.recipes.append(recipe)
-	db.session.commit()
-	flash('Recipe added to collection!')
-	return redirect(url_for('main.recipe', id=current_recipe))
-
-#_________________________________________
-#User facing books section
-
-@bp.route('/books')
-def book_list():
-	page = request.args.get('page', 1, type=int)
-	book_list = books.query.paginate(page, current_app.config['BOOKS_PER_PAGE'],False)
-	next_url = url_for('main.book_list', page=book_list.next_num) if book_list.has_next else None
-	prev_url = url_for('main.book_list', page=book_list.prev_num) if book_list.has_prev else None
-	return render_template('book_list.html', books=book_list.items, next_url = next_url, prev_url=prev_url)
-
-@bp.route('/book/<id>')
-def book(id):
-	book = books.query.filter_by(id=id).first_or_404()
-	return render_template('book.html', book=book)
-
-#Admin facing book creation
-
-@bp.route('/admin/manage_books')
-@login_required
-def manage_books():
-	if current_user.isAdmin is not True:
-		flash('Unable to access')
-		return redirect(url_for('main.index'))
-	page = request.args.get('page', 1, type=int)
-	book_list = books.query.paginate(page, current_app.config['BOOKS_PER_PAGE'],False)
-	next_url = url_for('main.book_list', page=book_list.next_num) if book_list.has_next else None
-	prev_url = url_for('main.book_list', page=book_list.prev_num) if book_list.has_prev else None
-	return render_template('manage_books.html', books=book_list.items, next_url = next_url, prev_url=prev_url)	
-
-@bp.route('/admin/create-book', methods=['GET','POST'])
-@login_required
-def create_book():
-	if current_user.isAdmin is not True:
-		flash('Unable to access')
-		return redirect(url_for('main.index'))
-	form = BookForm()
-	if form.validate_on_submit():
-		book = books(book_name=form.book_name.data, author=form.author.data, photoURL=form.photoURL.data)
-		db.session.add(book)
-		db.session.commit()
-		return redirect(url_for('main.manage_books'))
-	return render_template('create_book.html', form=form)	
 
 #___________________________________________________
 
@@ -212,10 +70,7 @@ def login():
 		return redirect(url_for('main.index'))
 	form = LoginForm()
 	if form.validate_on_submit():
-		print(form.username.data)
 		user = User.query.filter_by(username=form.username.data).first_or_404()
-		print(user)
-		print(user.password_hash)
 		password_check = check_password_hash(user.password_hash, form.password.data)
 		if user is None or not password_check:
 			flash('Invalid username or password')
@@ -271,19 +126,6 @@ def manage_ingredients():
 	prev_url = url_for('main.manage_ingredients', page=ingredients.prev_num) if ingredients.has_prev else None
 	return render_template('manage_ingredients.html', Ingredients = ingredients.items, next_url = next_url, prev_url = prev_url)
 
-@bp.route('/admin/create/ingredient', methods=['GET','POST'])
-@login_required
-def create_ingredient():
-	if current_user.isAdmin is not True:
-		flash('Unable to access')
-		return redirect(url_for('main.index'))
-	form = IngredientForm()
-	if form.validate_on_submit():
-		ingredient = Ingredients(ingredientName=form.ingredientName.data, ingredientType=form.ingredientType.data, measurementUnit=form.measurementUnit.data, standardUnitAmount=form.standardUnitAmount.data)
-		db.session.add(ingredient)
-		db.session.commit()
-		return redirect(url_for('main.manage_ingredients'))
-	return render_template('create_ingredient.html', title='Create Ingredient', form=form)
 
 @bp.route('/admin/recipes', methods=['GET','POST'])
 @login_required
@@ -292,7 +134,7 @@ def manage_recipes():
 		flash('Unable to access')
 		return redirect(url_for('main.index'))
 	page = request.args.get('page', 1, type=int)
-	recipes = Recipe.query.paginate(page, current_app.config['RECIPES_PER_PAGE'],False)
+	recipes = Recipe2.query.paginate(page, current_app.config['RECIPES_PER_PAGE'],False)
 	book_list = books.query.all()
 	next_url = url_for('main.manage_recipes', page=recipes.next_num) if recipes.has_next else None
 	prev_url = url_for('main.manage_recipes', page=recipes.prev_num) if recipes.has_prev else None
@@ -319,7 +161,7 @@ def submit_recipe():
 		cookTime = request.form['cookTime']
 		if cookTime is None or "" or " ":
 			cookTime = 0.
-		recipeCheck = Recipe.query.filter_by(recipeName=recipeName).first()
+		recipeCheck = Recipe2.query.filter_by(recipeName=recipeName).first()
 		if recipeCheck is not None:
 			flash('A recipe with this name already exists. Please choose a new name for your recipe')
 			return redirect(url_for('main.admin_create_recipe'))
@@ -329,7 +171,7 @@ def submit_recipe():
 		ingredientNames = request.form.getlist('ingredientName')
 		ingredientMeasurements = request.form.getlist('ingredientMeasurement')
 		ingredientAmounts = request.form.getlist('ingredientAmount')
-		recipeRecord = Recipe.query.filter_by(recipeName=recipeName).first()
+		recipeRecord = Recipe2.query.filter_by(recipeName=recipeName).first()
 		recipeRecordID = recipeRecord.id
 #		Iterate over all the ingredients in the recipe Form
 		i = 0
@@ -350,16 +192,6 @@ def submit_recipe():
 			db.session.add(step)
 		db.session.commit()
 		return  redirect(url_for('main.admin'))
-
-@bp.route('/admin/add-to-book/<current_book>/<current_recipe>')
-@login_required
-def add_to_book(current_book, current_recipe):
-	book = books.query.filter_by(id=current_book).first_or_404()
-	recipe = Recipe.query.filter_by(id=current_recipe).first()
-	book.recipes.append(recipe)
-	db.session.commit()
-	flash('Recipe added to book!')
-	return redirect(url_for('main.manage_recipes'))
 
 @bp.route('/admin/users')
 @login_required
@@ -382,18 +214,7 @@ def search():
 	search_collections = collections.query.filter(collections.collection_name.contains(term)).limit(3).all()
 	search_books = books.query.filter(books.book_name.contains(term)).limit(3).all()
 	search_term = term
-	return render_template('search.html', title=('Search Results'), term=term, recipes=search_recipes, collections = search_collections, books = search_books)
-
-
-#User following recipes
-@bp.route('/follower/<user>/<recipe_id>')
-def follow_recipe(user,recipe_id):
-	recipe = Recipe.query.filter_by(id=recipe_id).first_or_404()
-	user = User.query.filter_by(id=user).first_or_404()
-	saved_recipe = savedrecipes(saved_user_id=user.id, saved_recipe_id = recipe.id)
-	db.session.add(saved_recipe)
-	db.session.commit()
-	return redirect(url_for('main.recipe', id=recipe.id))
+	return render_template('search.html', title=('Search Results'), term=term, recipes=search_recipes)
 
 
 

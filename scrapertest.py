@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 from flask import render_template, Flask, redirect, url_for, flash, request, current_app, g, send_from_directory
 from flask_login import current_user, login_user, logout_user, login_required
 from app import db, login
-from app.models import Recipe, User, Ingredients, recipe_ingredients, Recipe_Steps, books, collections, collection_followers, book_followers, recipe_books, recipe_collections, savedrecipes, Recipe2, recipe_ingredients2, Recipe_Steps2
+from app.models import User, Ingredients, Recipe2
 
 def recipePull(input_url):
 
@@ -182,18 +182,4 @@ def recipePull(input_url):
 		print("Unable to handle recipe")
 
 
-	# print("image url " + image_url)
-	# print("author " + author)
-	# print("description " + description)
-	# print("keywords " + keywords)
-	# print("ratingCount " + str(ratingCount))
-	# print("ratingValue " + str(ratingValue))
-	# print("Recipe name" + name)
-	# print("recipe Category " + recipeCategory)
-	# print("recipe Cuisine " + recipeCuisine)
-	# print("recipe instructions: ")  
-	# print(recipeInstructions)
-	# print("recipe Ingredients: ")
-	# print(recipeIngredients)
-	# print("recipe Yield " + recipeYield)
 

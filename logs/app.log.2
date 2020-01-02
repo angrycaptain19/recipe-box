@@ -1,106 +1,12 @@
-2019-10-07 22:15:41,008 ERROR: Exception on /recipeSubmission [POST] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
+2020-01-02 15:37:10,821 ERROR: Exception on / [GET] [in /Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py:1890]
 Traceback (most recent call last):
-  File "/Users/timgilboy/recipes_v3/recipe-box/scrapertest.py", line 43, in recipePull
-    parsed_script = json.loads(script_content)
-  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/json/__init__.py", line 348, in loads
-    'not {!r}'.format(s.__class__.__name__))
-TypeError: the JSON object must be str, bytes or bytearray, not 'list'
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/sqlalchemy/ext/declarative/clsregistry.py", line 294, in __call__
+    x = eval(self.arg, globals(), self._dict)
+  File "<string>", line 1, in <module>
+NameError: name 'recipeIngredients' is not defined
 
 During handling of the above exception, another exception occurred:
 
-Traceback (most recent call last):
-  File "/Users/timgilboy/recipes_v3/recipe-box/scrapertest.py", line 47, in recipePull
-    parsed_script = json.loads(script_content)
-  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/json/__init__.py", line 354, in loads
-    return _default_decoder.decode(s)
-  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/json/decoder.py", line 339, in decode
-    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
-  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/json/decoder.py", line 355, in raw_decode
-    obj, end = self.scan_once(s, idx)
-json.decoder.JSONDecodeError: Invalid control character at: line 21 column 293 (char 1328)
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/Users/timgilboy/recipes_v3/recipe-box/app/main/routes.py", line 47, in recipeSubmission
-    recipePull(inputurl)
-  File "/Users/timgilboy/recipes_v3/recipe-box/scrapertest.py", line 49, in recipePull
-    one_script_tag = one_script_tag.replace('\n','')
-TypeError: 'NoneType' object is not callable
-2019-10-07 22:17:51,613 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 22:17:51,613 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 22:17:51,618 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 22:17:51,662 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 22:19:57,926 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 22:19:57,928 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 22:19:58,013 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 22:19:58,032 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 22:30:51,615 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 22:30:51,630 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 22:30:51,642 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 22:30:51,649 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 22:31:42,703 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 22:31:42,704 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 22:31:42,705 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 22:31:42,710 INFO: Recipe book startup [in /Users/timgilboy/recipes_v3/recipe-box/app/__init__.py:77]
-2019-10-07 22:31:46,713 ERROR: Exception on /recipeSubmission [POST] [in /Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/Users/timgilboy/recipes_v3/recipe-box/app/main/routes.py", line 47, in recipeSubmission
-    recipePull(inputurl)
-  File "/Users/timgilboy/recipes_v3/recipe-box/scrapertest.py", line 14, in recipePull
-    response = requests.get(url)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/requests/api.py", line 75, in get
-    return request('get', url, params=params, **kwargs)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/requests/api.py", line 60, in request
-    return session.request(method=method, url=url, **kwargs)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/requests/sessions.py", line 533, in request
-    resp = self.send(prep, **send_kwargs)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/requests/sessions.py", line 640, in send
-    adapter = self.get_adapter(url=request.url)
-  File "/Users/timgilboy/recipes_v3/venv/lib/python3.6/site-packages/requests/sessions.py", line 731, in get_adapter
-    raise InvalidSchema("No connection adapters were found for '%s'" % url)
-requests.exceptions.InvalidSchema: No connection adapters were found for 'if (meta_title != "invalid"): 						meta_title_content = meta_title['content'] 					if (meta_image != "invalid"): 						meta_image_content = meta_image['content']'
-2019-12-18 10:46:00,063 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
-2019-12-18 10:46:00,063 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
-2019-12-18 10:46:00,067 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
-2019-12-18 10:46:00,104 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
-2019-12-18 10:53:01,978 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
-2019-12-18 10:53:01,981 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
-2019-12-18 10:53:01,982 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
-2019-12-18 10:53:01,985 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
-2019-12-18 10:54:57,184 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
-2019-12-18 10:54:57,185 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
-2019-12-18 10:54:57,186 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
-2019-12-18 10:54:57,215 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
-2019-12-18 10:55:05,137 ERROR: Exception on /search [POST] [in /Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py:1890]
 Traceback (most recent call last):
   File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -114,7 +20,88 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/users/timgilboy/Downloads/recipebox/recipe-box/app/main/routes.py", line 376, in search
-    console.log(term)
-NameError: name 'console' is not defined
-2019-12-18 10:55:17,376 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+  File "/users/timgilboy/Downloads/recipebox/recipe-box/app/main/routes.py", line 23, in index
+    recipes = Recipe2.query.order_by(Recipe2.id.desc()).paginate(page, current_app.config['RECIPES_PER_PAGE'],False)
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask_sqlalchemy/__init__.py", line 517, in __get__
+    mapper = orm.class_mapper(type)
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/sqlalchemy/orm/base.py", line 441, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/sqlalchemy/orm/base.py", line 420, in _inspect_mapped_class
+    mapper._configure_all()
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/sqlalchemy/orm/mapper.py", line 1337, in _configure_all
+    configure_mappers()
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/sqlalchemy/orm/mapper.py", line 3229, in configure_mappers
+    mapper._post_configure_properties()
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/sqlalchemy/orm/mapper.py", line 1947, in _post_configure_properties
+    prop.init()
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/sqlalchemy/orm/interfaces.py", line 196, in init
+    self.do_init()
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/sqlalchemy/orm/relationships.py", line 1860, in do_init
+    self._process_dependent_arguments()
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/sqlalchemy/orm/relationships.py", line 1889, in _process_dependent_arguments
+    setattr(self, attr, attr_value())
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/sqlalchemy/ext/declarative/clsregistry.py", line 301, in __call__
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: When initializing mapper mapped class Ingredients->ingredients, expression 'recipeIngredients' failed to locate a name ("name 'recipeIngredients' is not defined"). If this is a class name, consider adding this relationship() to the <class 'app.models.Ingredients'> class after both dependent classes have been defined.
+2020-01-02 15:37:58,727 INFO: Recipe book startup [in /Users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2020-01-02 15:38:04,134 INFO: Recipe book startup [in /Users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2020-01-02 15:38:07,135 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2020-01-02 15:38:07,177 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2020-01-02 15:38:07,269 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2020-01-02 15:38:07,298 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2020-01-02 15:38:09,124 ERROR: Exception on / [GET] [in /Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py:1890]
+Traceback (most recent call last):
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/sqlalchemy/orm/relationships.py", line 2349, in _determine_joins
+    self.primaryjoin = join_condition(
+  File "<string>", line 2, in join_condition
+  File "<string>", line 2, in _join_condition
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/sqlalchemy/util/deprecations.py", line 128, in warned
+    return fn(*args, **kwargs)
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/sqlalchemy/sql/selectable.py", line 944, in _join_condition
+    raise exc.NoForeignKeysError(
+sqlalchemy.exc.NoForeignKeysError: Can't find any foreign key relationships between 'ingredients' and 'recipeIngredients2'.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/users/timgilboy/Downloads/recipebox/recipe-box/app/main/routes.py", line 23, in index
+    recipes = Recipe2.query.order_by(Recipe2.id.desc()).paginate(page, current_app.config['RECIPES_PER_PAGE'],False)
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask_sqlalchemy/__init__.py", line 517, in __get__
+    mapper = orm.class_mapper(type)
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/sqlalchemy/orm/base.py", line 441, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/sqlalchemy/orm/base.py", line 420, in _inspect_mapped_class
+    mapper._configure_all()
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/sqlalchemy/orm/mapper.py", line 1337, in _configure_all
+    configure_mappers()
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/sqlalchemy/orm/mapper.py", line 3229, in configure_mappers
+    mapper._post_configure_properties()
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/sqlalchemy/orm/mapper.py", line 1947, in _post_configure_properties
+    prop.init()
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/sqlalchemy/orm/interfaces.py", line 196, in init
+    self.do_init()
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/sqlalchemy/orm/relationships.py", line 1861, in do_init
+    self._setup_join_conditions()
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/sqlalchemy/orm/relationships.py", line 1925, in _setup_join_conditions
+    self._join_condition = jc = JoinCondition(
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/sqlalchemy/orm/relationships.py", line 2246, in __init__
+    self._determine_joins()
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/sqlalchemy/orm/relationships.py", line 2365, in _determine_joins
+    raise sa_exc.NoForeignKeysError(
+sqlalchemy.exc.NoForeignKeysError: Could not determine join condition between parent/child tables on relationship Ingredients.recipes - there are no foreign keys linking these tables via secondary table 'recipeIngredients2'.  Ensure that referencing columns are associated with a ForeignKey or ForeignKeyConstraint, or specify 'primaryjoin' and 'secondaryjoin' expressions.
+2020-01-02 15:40:27,048 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2020-01-02 15:40:27,056 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2020-01-02 15:40:27,099 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2020-01-02 15:40:27,147 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
