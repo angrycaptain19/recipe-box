@@ -24,3 +24,36 @@
 2020-01-03 09:42:14,438 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
 2020-01-03 09:42:14,464 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
 2020-01-03 09:42:14,494 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2020-01-03 09:45:41,832 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2020-01-03 09:45:41,832 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2020-01-03 09:45:41,832 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2020-01-03 09:45:41,832 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2020-01-03 09:45:47,542 ERROR: Exception on /search [POST] [in /Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py:1890]
+Traceback (most recent call last):
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/timgilboy/Downloads/recipebox/venv/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/users/timgilboy/Downloads/recipebox/recipe-box/app/main/routes.py", line 214, in search
+    search_collections = collections.query.filter(collections.collection_name.contains(term)).limit(3).all()
+NameError: name 'collections' is not defined
+2020-01-03 09:46:11,272 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2020-01-03 09:46:11,321 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2020-01-03 09:46:11,361 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2020-01-03 09:46:11,376 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2020-01-03 09:47:44,089 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2020-01-03 09:47:44,090 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2020-01-03 09:47:44,090 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2020-01-03 09:47:44,123 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2020-01-03 09:48:55,262 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2020-01-03 09:48:55,277 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2020-01-03 09:48:55,343 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2020-01-03 09:48:55,357 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]

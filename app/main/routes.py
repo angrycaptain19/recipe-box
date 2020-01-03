@@ -211,8 +211,6 @@ def manage_users():
 def search():
 	term = request.form['search']
 	search_recipes = Recipe2.query.filter(Recipe2.recipeName.contains(term)).limit(3).all()
-	search_collections = collections.query.filter(collections.collection_name.contains(term)).limit(3).all()
-	search_books = books.query.filter(books.book_name.contains(term)).limit(3).all()
 	search_term = term
 	return render_template('search.html', title=('Search Results'), term=term, recipes=search_recipes)
 
