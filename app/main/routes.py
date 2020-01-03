@@ -210,8 +210,9 @@ def manage_users():
 @bp.route('/search', methods = ['GET','POST'])
 def search():
 	term = request.form['search']
+	console.log(term)
 	search_recipes = Recipe2.query.filter(Recipe2.recipeName.contains(term)).limit(3).all()
-	search_term = term
+	console.log(search_recipes)
 	return render_template('search.html', title=('Search Results'), term=term, recipes=search_recipes)
 
 
