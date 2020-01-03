@@ -57,3 +57,7 @@ NameError: name 'collections' is not defined
 2020-01-03 09:48:55,277 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
 2020-01-03 09:48:55,343 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
 2020-01-03 09:48:55,357 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2020-01-03 10:11:46,477 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2020-01-03 10:11:46,477 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2020-01-03 10:11:46,477 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
+2020-01-03 10:11:46,479 INFO: Recipe book startup [in /users/timgilboy/Downloads/recipebox/recipe-box/app/__init__.py:77]
