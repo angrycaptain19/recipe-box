@@ -163,18 +163,18 @@ def recipePull(input_url):
 		recipeRecord = Recipe2.query.filter_by(recipeURL=url).first()
 		recipeRecordID = recipeRecord.id
 		i = 0
-		for ingredient in recipeIngredients:
-			if type(ingredient) == str:
-				recipeIngredient = recipe_ingredients2(recipe2_id=recipeRecordID, ingredient=ingredient)
-				db.session.add(recipeIngredient)
-			else:
-				print("invalid ingredient")
-		for recipeInstruction in recipeInstructions:
-			if type(recipeInstruction) == str:
-				instruction = Recipe_Steps2(recipe_id=recipeRecordID, directions=recipeInstruction)
-				db.session.add(instruction)
-			else:
-				print("invalid step")
+		# for ingredient in recipeIngredients:
+		# 	if type(ingredient) == str:
+		# 		recipeIngredient = recipe_ingredients2(recipe2_id=recipeRecordID, ingredient=ingredient)
+		# 		db.session.add(recipeIngredient)
+		# 	else:
+		# 		print("invalid ingredient")
+		# for recipeInstruction in recipeInstructions:
+		# 	if type(recipeInstruction) == str:
+		# 		instruction = Recipe_Steps2(recipe_id=recipeRecordID, directions=recipeInstruction)
+		# 		db.session.add(instruction)
+		# 	else:
+		# 		print("invalid step")
 		db.session.commit() 
 
 	else:
