@@ -145,53 +145,52 @@ def manage_recipes():
 def admin_create_recipe():
 	if current_user.isAdmin is not True:
 		return('Unable to access')
-		return redirect(url_for('main.index'))
 	return render_template('admin_create_recipe.html')
 
 @bp.route('/admin/submit_recipe', methods=['GET','POST'])
 def submit_recipe():
-	if request.method == 'POST':
-		#pull in all individual form responses. First create the Recipe record w/ no ingredients or steps
-		recipeName = request.form['recipeName']
-		mealType = request.form['mealType']
-		Image = request.form['Image']
-		prepTime = request.form['prepTime']
-		if prepTime is None or "" or " ":
-			prepTime = 0.
-		cookTime = request.form['cookTime']
-		if cookTime is None or "" or " ":
-			cookTime = 0.
-		recipeCheck = Recipe2.query.filter_by(recipeName=recipeName).first()
-		if recipeCheck is not None:
-			flash('A recipe with this name already exists. Please choose a new name for your recipe')
-			return redirect(url_for('main.admin_create_recipe'))
-		recipe = Recipe(recipeName=recipeName, mealType=mealType, Image=Image, prepTime=prepTime, cookTime=cookTime)
-		db.session.add(recipe)
+	if request.method != 'POST':
+		return
+
+	#pull in all individual form responses. First create the Recipe record w/ no ingredients or steps
+	recipeName = request.form['recipeName']
+	mealType = request.form['mealType']
+	Image = request.form['Image']
+	prepTime = request.form['prepTime']
+	prepTime = 0.
+	cookTime = request.form['cookTime']
+	cookTime = 0.
+	recipeCheck = Recipe2.query.filter_by(recipeName=recipeName).first()
+	if recipeCheck is not None:
+		flash('A recipe with this name already exists. Please choose a new name for your recipe')
+		return redirect(url_for('main.admin_create_recipe'))
+	recipe = Recipe(recipeName=recipeName, mealType=mealType, Image=Image, prepTime=prepTime, cookTime=cookTime)
+	db.session.add(recipe)
 #		Pull in ingredient information, then query for the recipe we just created to get ID and create the recipeIngredients record for these ingredients
-		ingredientNames = request.form.getlist('ingredientName')
-		ingredientMeasurements = request.form.getlist('ingredientMeasurement')
-		ingredientAmounts = request.form.getlist('ingredientAmount')
-		recipeRecord = Recipe2.query.filter_by(recipeName=recipeName).first()
-		recipeRecordID = recipeRecord.id
+	ingredientNames = request.form.getlist('ingredientName')
+	ingredientMeasurements = request.form.getlist('ingredientMeasurement')
+	ingredientAmounts = request.form.getlist('ingredientAmount')
+	recipeRecord = Recipe2.query.filter_by(recipeName=recipeName).first()
+	recipeRecordID = recipeRecord.id
 #		Iterate over all the ingredients in the recipe Form
-		i = 0
-		for ingredientName in ingredientNames:
+	i = 0
+	for ingredientName in ingredientNames:
 #		Check if this ingredient already exists in the ingredient table and if not create an ingredient record for that ingredient
-			ingredient = Ingredients.query.filter_by(ingredientName=ingredientName).first()	
-			if ingredient is None:
-				newIngredient = Ingredients(ingredientName=ingredientName)
-				db.session.add(newIngredient)
-				ingredient = Ingredients.query.filter_by(ingredientName=ingredientName).first()
-			db.session.add(recipeIngredient)
-			i + 1
-		recipeSteps = request.form.getlist('recipeStep')
-		j=0
-		for recipeStep in recipeSteps:
-			j=j+1
-			step = Recipe_Steps(recipe_id=recipeRecordID, stepNumber=j, directions=recipeStep)
-			db.session.add(step)
-		db.session.commit()
-		return  redirect(url_for('main.admin'))
+		ingredient = Ingredients.query.filter_by(ingredientName=ingredientName).first()	
+		if ingredient is None:
+			newIngredient = Ingredients(ingredientName=ingredientName)
+			db.session.add(newIngredient)
+			ingredient = Ingredients.query.filter_by(ingredientName=ingredientName).first()
+		db.session.add(recipeIngredient)
+		i + 1
+	recipeSteps = request.form.getlist('recipeStep')
+	j=0
+	for recipeStep in recipeSteps:
+		j += 1
+		step = Recipe_Steps(recipe_id=recipeRecordID, stepNumber=j, directions=recipeStep)
+		db.session.add(step)
+	db.session.commit()
+	return  redirect(url_for('main.admin'))
 
 @bp.route('/admin/users')
 @login_required
